@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Transitions API with Vue.js | ICS</title>
+  </head>
+  <body>
+    <main>
+      <div class="header">
+        <h1>View Transitions API with Vue.js</h1>
+      </div>
+      <!-- コンテンツ -->
+      <div class="page">
+        <div class="table" :inert="isModalOpen">
+          <!-- <template v-for="(item, index) in items"> -->
+          <div
+            class="row"
+            v-if="index % 2 === 0"
+            :class="{
+            _left: (index / 2) % 2 === 0,
+            _right: (index / 2) % 2 === 1,
+          }"
+          >
+            <CardItem
+              :item="items[index]"
+              @open="openDialog"
+              :selected="selectedItem?.id === items[index].id"
+            />
+            <CardItem
+              :item="items[index + 1]"
+              @open="openDialog"
+              :selected="selectedItem?.id === items[index + 1].id"
+            />
+          </div>
+          <!-- </template> -->
+        </div>
+
+        <!-- <template v-if="selectedItem != null"> -->
+        <ModalDialog
+          v-if="isModalOpen"
+          :item="selectedItem"
+          @close="closeDialog"
+        ></ModalDialog>
+        <!-- </template> -->
+      </div>
+    </main>
+    <!-- <script type="module" src="/src/main.ts"></script> -->
+  </body>
+</html>
