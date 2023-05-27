@@ -1,7 +1,9 @@
 import axios from "axios";
 import fs from "fs";
+import dotenv from "dotenv";
 
 console.log("start");
+dotenv.config();
 
 /**
  * youtube API について
@@ -17,7 +19,7 @@ console.log("start");
 
 // const googleYoutubeApiUrl = 'https://www.googleapis.com/youtube/v3/videos'
 const googleYoutubeApiUrl = "https://www.googleapis.com/youtube/v3";
-const api_key = "AIzaSyBc1qL5tiGjg90EmEI9AcMR4Hrg6BJjLiM";
+const api_key = process.env.YOUTUBE_API_KEY;
 const channelId = `UCmKlo3BXt60nzgk2r_JgvwQ`; // 有隣堂のyoutube
 const resource = `search`;
 const part = `id,snippet`;
