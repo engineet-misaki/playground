@@ -1,0 +1,164 @@
+{
+  "kind": "youtube#searchListResponse",
+  "etag": "wpBsCbQ-M-so_YKo-aA1Ga-8qvM",
+  "nextPageToken": "CAUQAA",
+  "regionCode": "JP",
+  "pageInfo": { "totalResults": 201, "resultsPerPage": 5 },
+  "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "wGVkuV1F_9zwH3i-RFf2bvrr6dg",
+      "id": { "kind": "youtube#video", "videoId": "4RWGpTUCq7U" },
+      "snippet": {
+        "publishedAt": "2022-01-04T05:16:57Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "【固形って使ってた？】墨の世界 ~ 有隣堂しか知らない世界080~",
+        "description": "チャンネル登録はこちらから！→ https://bit.ly/2EcfnTM ブッコローのLINEスタンプはこちらから→https://bit.ly/2Sh56JZ ブッコロー ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/4RWGpTUCq7U/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/4RWGpTUCq7U/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/4RWGpTUCq7U/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-01-04T05:16:57Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "YAaDeUtQJMgfAIW1z2DUnytiKCc",
+      "id": { "kind": "youtube#video", "videoId": "czOWw7Ahi7U" },
+      "snippet": {
+        "publishedAt": "2022-07-01T07:24:16Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "【美しい】ハンドレタリングの世界 ～有隣堂しか知らない世界114～",
+        "description": "チャンネル登録はこちらから！→ https://bit.ly/2EcfnTM ブッコローのLINEスタンプはこちらから→https://bit.ly/2Sh56JZ ブッコロー ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/czOWw7Ahi7U/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/czOWw7Ahi7U/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/czOWw7Ahi7U/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-07-01T07:24:16Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "qRXgohwztSdmlsogmTvgHTLqKZw",
+      "id": { "kind": "youtube#video", "videoId": "PD6Wsb8yF6c" },
+      "snippet": {
+        "publishedAt": "2022-01-11T03:00:21Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "【黒いだけじゃない】墨の世界 後編~有隣堂しか知らない世界081~",
+        "description": "チャンネル登録はこちらから！→ https://bit.ly/2EcfnTM ブッコローのLINEスタンプはこちらから→https://bit.ly/2Sh56JZ ブッコロー ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/PD6Wsb8yF6c/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/PD6Wsb8yF6c/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/PD6Wsb8yF6c/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-01-11T03:00:21Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "J1InONejm5QcEluShLWnwsba2OA",
+      "id": { "kind": "youtube#video", "videoId": "2PEffHtDNZ4" },
+      "snippet": {
+        "publishedAt": "2020-07-14T03:00:59Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "【全盛期、あの頃は】週プロ！ゴング！プロレス雑誌の世界 ～有隣堂しか知らない世界003～",
+        "description": "チャンネル登録はこちらから！→ https://bit.ly/2EcfnTM □目次 0:00 オープニング 0:58 往年のプロレス雑誌紹介 4:20 書店の棚を ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/2PEffHtDNZ4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/2PEffHtDNZ4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/2PEffHtDNZ4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2020-07-14T03:00:59Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "JnZtHEaYHo8nnNtTnu-seIizR4A",
+      "id": { "kind": "youtube#video", "videoId": "pKfjIW2iI8Y" },
+      "snippet": {
+        "publishedAt": "2022-06-28T07:00:15Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "【最新】恐竜図鑑の世界 ～有隣堂しか知らない世界113～",
+        "description": "チャンネル登録はこちらから！→ https://bit.ly/2EcfnTM ブッコローのLINEスタンプはこちらから→https://bit.ly/2Sh56JZ ブッコロー ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/pKfjIW2iI8Y/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/pKfjIW2iI8Y/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/pKfjIW2iI8Y/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-06-28T07:00:15Z"
+      }
+    }
+  ]
+}
