@@ -1,0 +1,566 @@
+{
+  "kind": "youtube#searchListResponse",
+  "etag": "6AYsWRtU4GQf8nWDp8TvCE-fi0E",
+  "regionCode": "JP",
+  "pageInfo": { "totalResults": 18, "resultsPerPage": 18 },
+  "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "qcZw1wsv1CSwhJWON3km1RbY_RY",
+      "id": { "kind": "youtube#video", "videoId": "L-17MN4RQAU" },
+      "snippet": {
+        "publishedAt": "2022-08-12T09:18:22Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "【略称決定！】有隣堂しか知らない世界→「ゆうせか」/視聴者の方→「ゆーりんちー」 ～有隣堂しか知らない世界126～",
+        "description": "8月12日（金）16:00～のYouTubeライブ配信のアーカイブ、 こちらからお楽しみくださいー！ □有隣堂 創業112年。神奈川・ ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/L-17MN4RQAU/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/L-17MN4RQAU/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/L-17MN4RQAU/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-08-12T09:18:22Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "_TY5cK0fXhbpzd5CA4SWDvedXKE",
+      "id": { "kind": "youtube#video", "videoId": "Dik1FqFLwNM" },
+      "snippet": {
+        "publishedAt": "2022-09-22T10:57:00Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "【vsミステリー作家】即興で考える超短編小説 〜有隣堂しか知らない世界136〜",
+        "description": "9/22(木)18～19時 YouTubeライブ ＼ 作家の新川帆立さんがゲスト出演。 ゆーりんちー の皆さまからのコメントで集まった3つの ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/Dik1FqFLwNM/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/Dik1FqFLwNM/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/Dik1FqFLwNM/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-09-22T10:57:00Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "nYm3DBEXVNzM0azHOHyHYnkx1wM",
+      "id": { "kind": "youtube#video", "videoId": "b4EbstzHNAE" },
+      "snippet": {
+        "publishedAt": "2022-10-13T11:00:26Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "年３万冊の新刊を吟味する男が登場「お悩み相談室（オススメの本もご紹介）」 ～有隣堂しか知らない世界140～",
+        "description": "10/13（木）のYouTubeライブのアーカイブです！ 【出演者】 有隣堂のYouTubeを裏で牛耳る女 広報・マーケティング部 渡邉 郁 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/b4EbstzHNAE/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/b4EbstzHNAE/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/b4EbstzHNAE/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-10-13T11:00:26Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "lkk3bmlA41_ZwY9CZPguU0vVJNw",
+      "id": { "kind": "youtube#video", "videoId": "l5Lhji8_jFM" },
+      "snippet": {
+        "publishedAt": "2022-11-10T10:33:31Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "【生配信】特殊紙 You Tube通販！ ～有隣堂しか知らない世界146～",
+        "description": "今回は、弊社文房具バイヤー間仁田が 選りすぐりの特殊紙をご紹介！ 今回ご紹介する特殊紙は、 有隣堂ヤフーショッピング店で ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/l5Lhji8_jFM/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/l5Lhji8_jFM/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/l5Lhji8_jFM/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-11-10T10:33:31Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "9vvJaDBvi-duONyqjKFmJBBrgx0",
+      "id": { "kind": "youtube#video", "videoId": "ow90H4Rnwc0" },
+      "snippet": {
+        "publishedAt": "2023-02-09T10:46:24Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "【即興イラスト対決】学研・恐竜図鑑編集者vs有隣堂・文房具バイヤー ～有隣堂しか知らない世界165～",
+        "description": "出演：松原由幸（学研図鑑編集部）・間仁田亮治（文房具バイヤー） 司会：R.B.ブッコロー 「30秒で恐竜を描ける男」学研図鑑 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/ow90H4Rnwc0/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/ow90H4Rnwc0/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/ow90H4Rnwc0/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-02-09T10:46:24Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "UpFXO5IwNitoF4kE9yoDPCydmq0",
+      "id": { "kind": "youtube#video", "videoId": "8tVEK7Y-yb4" },
+      "snippet": {
+        "publishedAt": "2023-01-26T10:39:15Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "【2月24日発売】ゆうせか書籍化のお知らせ!! ～有隣堂しか知らない世界162～",
+        "description": "2/24(金)「有隣堂しか知らない世界」の書籍が発売になります！！ ・R.B.ブッコローサイン本 1/28（土）20：00 ～ 有隣堂ヤフー ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/8tVEK7Y-yb4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/8tVEK7Y-yb4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/8tVEK7Y-yb4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-01-26T10:39:15Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "wTlZr9V_IB0j8MXci4d5mBgNFZM",
+      "id": { "kind": "youtube#video", "videoId": "SmL7J9VLat8" },
+      "snippet": {
+        "publishedAt": "2023-02-23T11:26:25Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "【生中継】ブッコローのサイン本追加！ ～有隣堂しか知らない世界168～",
+        "description": "司会：R.B.ブッコロー 【ブッコローのサイン本を追加します！】 2月24日発売の書籍『老舗書店「有隣堂」が作る企業YouTubeの ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/SmL7J9VLat8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/SmL7J9VLat8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/SmL7J9VLat8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-02-23T11:26:25Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "o_9yJV-4HPIXhPCGpG7ydaHp9Zc",
+      "id": { "kind": "youtube#video", "videoId": "Dgr_GUDF-x8" },
+      "snippet": {
+        "publishedAt": "2022-12-13T11:23:03Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "【あと1600人】目指せ配信中に登録者20万人 ～有隣堂しか知らない世界153～",
+        "description": "【出演者】 R.B.ブッコロー 岡﨑弘子（文房具バイヤー） 渡邊郁（広報） 配信中にチャンネル登録者20万人を目指します！",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/Dgr_GUDF-x8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/Dgr_GUDF-x8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/Dgr_GUDF-x8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-12-13T11:23:03Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "imu3wiqTNYPjOnvCxBRJ_kpRsXw",
+      "id": { "kind": "youtube#video", "videoId": "eJOB4IwZHdo" },
+      "snippet": {
+        "publishedAt": "2023-03-09T10:46:10Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "ブッコローのボヤキ配信 ～有隣堂しか知らない世界171～",
+        "description": "司会：R.B.ブッコロー 最近、あまりの多忙ぶりにボヤキが止まらない、当チャンネルMCのブッコロー氏。 今回は視聴者の皆様 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/eJOB4IwZHdo/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/eJOB4IwZHdo/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/eJOB4IwZHdo/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-03-09T10:46:10Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "61s9WGlGpZhfTvx-ll5D7A15dGo",
+      "id": { "kind": "youtube#video", "videoId": "w5dPl7S5uEo" },
+      "snippet": {
+        "publishedAt": "2022-12-22T11:51:21Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "【生配信】絵本作家VS文房具バイヤー　イラスト対決 ～有隣堂しか知らない世界155～",
+        "description": "出演：ぬまのうまき（絵本作家）・間仁田亮治（文房具バイヤー） 司会：R.B.ブッコロー 「新人絵本作家の世界」に出演した絵本 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/w5dPl7S5uEo/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/w5dPl7S5uEo/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/w5dPl7S5uEo/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-12-22T11:51:21Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "Bd58VwJwIQD-W74Pja9_m39SmdU",
+      "id": { "kind": "youtube#video", "videoId": "BjnpY-hn9AE" },
+      "snippet": {
+        "publishedAt": "2023-05-11T10:44:02Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "有隣堂文房具バイヤーに質問コーナー！(仮)  ～有隣堂しか知らない世界184～",
+        "description": "【出演者】 文房具王になり損ねた女 岡﨑弘子（文房具バイヤー） 【MC】 R.B.ブッコロー 弊社文房具バイヤー「文房具王になり ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/BjnpY-hn9AE/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/BjnpY-hn9AE/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/BjnpY-hn9AE/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-05-11T10:44:02Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "eBmPdZvPXB4zQl4VBmo0L5dfr0w",
+      "id": { "kind": "youtube#video", "videoId": "P019a1IOBDo" },
+      "snippet": {
+        "publishedAt": "2022-10-27T10:09:18Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "アナタの悩みにオススメの本（あとブッコロー柄ブックカバーもアンケートで決めます） ～有隣堂しか知らない世界143～",
+        "description": "年に３万冊の新刊を吟味する、当社随一の本好き・芝健太郎が、お悩みにピッタリの本をご紹介します   (ついでに鳥類随一の人生 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/P019a1IOBDo/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/P019a1IOBDo/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/P019a1IOBDo/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-10-27T10:09:18Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "BJ_fiWPjXjoR64y5VlK37JMfbnI",
+      "id": { "kind": "youtube#video", "videoId": "sl4uQsUpOxQ" },
+      "snippet": {
+        "publishedAt": "2023-04-13T11:13:11Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "元黒子(STORY STORY UENO店長)に質問コーナー ～有隣堂しか知らない世界178～",
+        "description": "【出演者】鈴木宏昭（元ブッコローの黒子・STORY STORY UENO店長） 【MC】R.B.ブッコロー 今回は、有隣堂広報・ ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/sl4uQsUpOxQ/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/sl4uQsUpOxQ/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/sl4uQsUpOxQ/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-04-13T11:13:11Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "GvvTQSn4n6PJbnO9lxPjh-KNuLg",
+      "id": { "kind": "youtube#video", "videoId": "ugOWM3CJxcw" },
+      "snippet": {
+        "publishedAt": "2023-01-12T10:42:41Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "【生配信】今年やりたいこと大募集＆お役立ち本のご紹介！ ～有隣堂しか知らない世界159～",
+        "description": "視聴者の皆さまから、「今年やりたいこと」を大募集！ 年に３万冊の新刊を吟味する、当社随一の本好き・芝健太郎が、 その「 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/ugOWM3CJxcw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/ugOWM3CJxcw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/ugOWM3CJxcw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-01-12T10:42:41Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "QPrNr5QszImNjzK_OrtZmfWFPHM",
+      "id": { "kind": "youtube#video", "videoId": "z8uUEqMeLa0" },
+      "snippet": {
+        "publishedAt": "2022-11-24T10:57:37Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "【生配信】恋愛お悩み相談会 ～有隣堂しか知らない世界149～",
+        "description": "出演：浅田悠介（恋愛コラムニスト／マジシャン） 司会：R.B.ブッコロー 「Twitterで恋に悩む女性を救っていたら “オンライン ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/z8uUEqMeLa0/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/z8uUEqMeLa0/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/z8uUEqMeLa0/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-11-24T10:57:37Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "vnzQNHR1_bzSJmMwcyfXmBsukls",
+      "id": { "kind": "youtube#video", "videoId": "uN7EqsEv2oE" },
+      "snippet": {
+        "publishedAt": "2023-03-23T11:03:16Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "有隣堂アルバイトに質問コーナー ～有隣堂しか知らない世界174～",
+        "description": "司会：R.B.ブッコロー 出演：綿引裕理（有隣堂 元アルバイト） ”有隣堂一の出たがり屋さん″こと、綿引裕理さんが久々の登場。",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/uN7EqsEv2oE/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/uN7EqsEv2oE/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/uN7EqsEv2oE/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-03-23T11:03:16Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "hfeZv7BWVQxHWKHSfBz6VlbwSr8",
+      "id": { "kind": "youtube#video", "videoId": "2gPesIIWaAo" },
+      "snippet": {
+        "publishedAt": "2023-04-27T10:42:46Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "新店（上野）の略称「ストウエ」に決定！ ～有隣堂しか知らない世界181～",
+        "description": "【出演者】 YouTubeを裏で牛耳る女 渡邉郁（広報） 年間3万冊の新刊を吟味する男 芝健太郎（書籍・雑誌課課長） 【MC】R.B. ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/2gPesIIWaAo/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/2gPesIIWaAo/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/2gPesIIWaAo/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-04-27T10:42:46Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "kf1oaeUbiA_R2tELgL62zBS8USE",
+      "id": { "kind": "youtube#video", "videoId": "eQrAmbFHAZA" },
+      "snippet": {
+        "publishedAt": "2023-05-25T10:53:14Z",
+        "channelId": "UCmKlo3BXt60nzgk2r_JgvwQ",
+        "title": "【質問待ってます】有隣堂の新入社員が登場  ～有隣堂しか知らない世界187～",
+        "description": "【出演者】 勝俣舜・鶴田七海・中嶋悠太(2023年新入社員） 【MC】 R.B.ブッコロー 6月30日で「有隣堂しか知らない世界」は3 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/eQrAmbFHAZA/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/eQrAmbFHAZA/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/eQrAmbFHAZA/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "有隣堂しか知らない世界",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-05-25T10:53:14Z"
+      }
+    }
+  ]
+}

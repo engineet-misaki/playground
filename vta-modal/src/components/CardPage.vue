@@ -4,14 +4,17 @@ import { transitionHelper } from "../utils";
 import CardItem from "./CardItem.vue";
 import ModalDialog from "./ModalDialog.vue";
 import type { Item } from "../types/Item";
-import { items } from "../data/items";
+// import { items } from "../data/items";
+import { items } from "../data/youtubeData";
 
 const isModalOpen = ref(false);
 
 const selectedItem = ref<Item | null>(null);
 
 const openDialog = (item: Item) => {
-  const element = document.querySelector<HTMLElement>(`[data-card="${item.id}"]`)!;
+  const element = document.querySelector<HTMLElement>(
+    `[data-card="${item.id}"]`
+  )!;
   const img = element.querySelector<HTMLElement>("img")!;
   const title = element.querySelector<HTMLElement>(".headline")!;
 
@@ -33,7 +36,6 @@ const openDialog = (item: Item) => {
   });
 };
 
-
 const closeDialog = () => {
   const id = selectedItem.value?.id ?? "";
 
@@ -43,7 +45,9 @@ const closeDialog = () => {
       selectedItem.value = null;
       await nextTick();
 
-      const element = document.querySelector<HTMLElement>(`[data-card='${id}']`)!;
+      const element = document.querySelector<HTMLElement>(
+        `[data-card='${id}']`
+      )!;
       const img = element.querySelector<HTMLImageElement>("img")!;
       const title = element.querySelector<HTMLElement>(".headline")!;
 
@@ -52,7 +56,9 @@ const closeDialog = () => {
       title.style.viewTransitionName = "card-title";
     },
     cleanup() {
-      const element = document.querySelector<HTMLElement>(`[data-card='${id}']`)!;
+      const element = document.querySelector<HTMLElement>(
+        `[data-card='${id}']`
+      )!;
       const img = element.querySelector<HTMLImageElement>("img")!;
       const title = element.querySelector<HTMLElement>(".headline")!;
 
@@ -76,14 +82,26 @@ const closeDialog = () => {
             _right: (index / 2) % 2 === 1,
           }"
         >
-          <CardItem :item="items[index]" @open="openDialog" :selected="selectedItem?.id === items[index].id" />
-          <CardItem :item="items[index + 1]" @open="openDialog" :selected="selectedItem?.id === items[index + 1].id" />
+          <CardItem
+            :item="items[index]"
+            @open="openDialog"
+            :selected="selectedItem?.id === items[index].id"
+          />
+          <CardItem
+            :item="items[index + 1]"
+            @open="openDialog"
+            :selected="selectedItem?.id === items[index + 1].id"
+          />
         </div>
       </template>
     </div>
 
     <template v-if="selectedItem != null">
-      <ModalDialog v-if="isModalOpen" :item="selectedItem" @close="closeDialog"></ModalDialog>
+      <ModalDialog
+        v-if="isModalOpen"
+        :item="selectedItem"
+        @close="closeDialog"
+      ></ModalDialog>
     </template>
   </div>
 </template>
