@@ -1,0 +1,90 @@
+{
+  "kind": "youtube#videoListResponse",
+  "etag": "rhnmcNAfrWSxhJv_KJPKKVE-cMM",
+  "items": [
+    {
+      "kind": "youtube#video",
+      "etag": "0iBd1GgqCCRvhsJyqhUOa-dEMaw",
+      "id": "okCyHiyj-Gw",
+      "snippet": {
+        "publishedAt": "2018-06-30T08:00:03Z",
+        "channelId": "UCz2ByBI15WnNt2RU_l4bKqA",
+        "title": "とうもろこしを丸々１本もらったお猿さんの食べ方が、感動するほどキレイ！！",
+        "description": "ちゃんと深追いしていくもったいない精神！見習わないといけません！\n\n【サブチャンネルできました！】\nhttps://www.youtube.com/channel/UCGMHpCrw3xW5qJsvDy3o3Gw\nおサルさんとこんなことしてほしいっていうリクエストもお待ちしております！\n【PookiesのFacebook】\nhttps://www.facebook.com/pookieskaimie\n【Pookies担当 黒田のTwitter】\nhttps://twitter.com/pookieskuroda",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/okCyHiyj-Gw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/okCyHiyj-Gw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/okCyHiyj-Gw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/okCyHiyj-Gw/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/okCyHiyj-Gw/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Pookies【プーキーズ】",
+        "tags": [
+          "プーキーズ",
+          "カイくん",
+          "猿",
+          "動物",
+          "おもしろ",
+          "可愛い",
+          "爆笑",
+          "天才",
+          "志村",
+          "とうもろこし",
+          "オヤツ",
+          "ASMR"
+        ],
+        "categoryId": "1",
+        "liveBroadcastContent": "none",
+        "localized": {
+          "title": "とうもろこしを丸々１本もらったお猿さんの食べ方が、感動するほどキレイ！！",
+          "description": "ちゃんと深追いしていくもったいない精神！見習わないといけません！\n\n【サブチャンネルできました！】\nhttps://www.youtube.com/channel/UCGMHpCrw3xW5qJsvDy3o3Gw\nおサルさんとこんなことしてほしいっていうリクエストもお待ちしております！\n【PookiesのFacebook】\nhttps://www.facebook.com/pookieskaimie\n【Pookies担当 黒田のTwitter】\nhttps://twitter.com/pookieskuroda"
+        }
+      },
+      "contentDetails": {
+        "duration": "PT3M22S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "statistics": {
+        "viewCount": "168398",
+        "likeCount": "2877",
+        "favoriteCount": "0",
+        "commentCount": "121"
+      },
+      "player": {
+        "embedHtml": "<iframe width=\"480\" height=\"270\" src=\"//www.youtube.com/embed/okCyHiyj-Gw\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>"
+      },
+      "topicDetails": {
+        "topicCategories": [
+          "https://en.wikipedia.org/wiki/Lifestyle_(sociology)"
+        ]
+      },
+      "recordingDetails": {}
+    }
+  ],
+  "pageInfo": { "totalResults": 1, "resultsPerPage": 1 }
+}
