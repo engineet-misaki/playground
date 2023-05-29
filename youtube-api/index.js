@@ -26,7 +26,7 @@ const part = `id,snippet`;
 const fields = `items(id,snippet(channelId,title,categoryId),contentDetails(relatedPlaylists/uploads))`;
 
 // 検索
-const option = `type=video&eventType=completed&maxResults=30&order=viewCount`;
+const option = `type=video&maxResults=50&order=viewCount`;
 const url = `${googleYoutubeApiUrl}/${resource}?part=${part}&channelId=${channelId}&${option}&key=${api_key}`;
 const writeFileUrl = `get_data/${resource}_api_data.json`;
 axios
@@ -35,7 +35,7 @@ axios
     writeFile(JSON.stringify(res.data));
   })
   .catch((e) => {
-    console.log(e);
+    console.log(e.data);
   });
 
 const writeFile = (data) => {
