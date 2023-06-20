@@ -1,9 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { ApolloServer } from "apollo-server-micro";
+import { NextRequest } from "next/server";
+import { ApolloServer } from "@apollo/server";
+import { startServerAndCreateNextHandler } from "@as-integrations/next";
 import { readFileSync } from "fs";
 import { join } from "path";
 
 import { Resolvers } from "../../../graphql/dist/generated-server";
+import { NextResponse } from "next/server";
 
 const path = join(process.cwd(), "graphql", "schema.graphql");
 const typeDefs = readFileSync(path).toString("utf-8");
@@ -33,17 +36,13 @@ const resolvers: Resolvers = {
 
 const apolloServer = new ApolloServer({ typeDefs, resolvers });
 
-const startServer = apolloServer.start();
+const handler = startServerAndCreateNextHandler<NextRequest>(apolloServer, {
+  context: async (req) => ({ req }),
+});
 
-export async function handler(req: NextApiRequest, res: NextApiResponse) {
-  await startServer;
-  await apolloServer.createHandler({
-    path: "/api/graphql",
-  })(req, res);
+export async function GET(request: NextRequest) {
+  return handler(request);
 }
-
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+export async function POST(request: NextRequest) {
+  return handler(request);
+}
