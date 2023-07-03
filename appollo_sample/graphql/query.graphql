@@ -1,11 +1,5 @@
-Query getUsersAndTeams {
+query getUsersName {
   users {
-    id
-    name
-    teamName
-  }
-  teams {
-    id
     name
   }
 }

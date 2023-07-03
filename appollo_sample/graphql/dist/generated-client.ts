@@ -24,20 +24,18 @@ export type Query = {
 export type Team = {
   __typename?: 'Team';
   id: Scalars['ID']['output'];
-  name: Scalars['String']['output'];
 };
 
 export type User = {
   __typename?: 'User';
   id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
-  teamName: Scalars['String']['output'];
 };
 
-export type GetUsersAndTeamsQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetUsersNameQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetUsersAndTeamsQuery = { __typename?: 'Query', users: Array<{ __typename?: 'User', id: string, name: string, teamName: string }>, teams: Array<{ __typename?: 'Team', id: string, name: string }> };
+export type GetUsersNameQuery = { __typename?: 'Query', users: Array<{ __typename?: 'User', name: string }> };
 
 
-export const GetUsersAndTeamsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getUsersAndTeams"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"users"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"teamName"}}]}},{"kind":"Field","name":{"kind":"Name","value":"teams"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<GetUsersAndTeamsQuery, GetUsersAndTeamsQueryVariables>;
+export const GetUsersNameDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getUsersName"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"users"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<GetUsersNameQuery, GetUsersNameQueryVariables>;

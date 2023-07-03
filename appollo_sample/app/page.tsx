@@ -5,49 +5,34 @@ import {
   InMemoryCache,
   ApolloProvider,
   useQuery,
-  gql,
 } from "@apollo/client";
-// import { GetUsersAndTeamsDocument } from "../graphql/dist/generated-client";
+import { GetUsersNameDocument } from "../graphql/dist/generated-client";
 
 const client = new ApolloClient({
   uri: "http://localhost:3000/api/graphql",
   cache: new InMemoryCache(),
 });
 
-const GET_TEAM = gql`
-  query getTeams {
-    teams {
-      id
-      name
-    }
-  }
-`;
-
-function UsersAndTeams() {
-  const { loading, error, data } = useQuery(GET_TEAM);
+function Users() {
+  const { loading, error, data } = useQuery(GetUsersNameDocument);
 
   if (loading) return <p>Loading...</p>;
   if (error || !data) return <p>Error</p>;
 
-  const { teams } = data;
-
   return (
-    <>
-      <h1>Team List</h1>
-      <ul>
-        {teams.map(({ id, name }) => {
-          return <li key={id}>{name}</li>;
-        })}
-      </ul>
-      <h1>User List</h1>
-    </>
+    <ul>
+      {data.users.map((user, index: number) => {
+        console.log(Object.getOwnPropertyNames(user)); // ['__typename', 'name']
+        return <li key={index}>{user.name}</li>;
+      })}
+    </ul>
   );
 }
 
 export default function App() {
   return (
     <ApolloProvider client={client}>
-      <UsersAndTeams />
+      <Users />
     </ApolloProvider>
   );
 }

@@ -2,12 +2,10 @@
 type User {
   id: ID!
   name: String!
-  teamName: String!
 }
 
 type Team {
   id: ID!
-  name: String!
 }
 
 type Query {
