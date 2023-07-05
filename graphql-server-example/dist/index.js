@@ -1,40 +1,94 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
-// A schema is a collection of type definitions (hence "typeDefs")
-// that together define the "shape" of queries that are executed against
-// your data.
-const typeDefs = `#graphql
-  # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
-
-  # This "Book" type defines the queryable fields for every book in our data source.
-  type Book {
-    title: String
-    author: String
-  }
-
-  # The "Query" type is special: it lists all of the available queries that
-  # clients can execute, along with the return type for each. In this
-  # case, the "books" query returns an array of zero or more Books (defined above).
-  type Query {
-    books: [Book]
-  }
-`;
+const libraries = [
+    {
+        branch: "downtown",
+    },
+    {
+        branch: "riverside",
+    },
+];
+// The branch field of a book indicates which library has it in stock
 const books = [
     {
         title: "The Awakening",
         author: "Kate Chopin",
+        branch: "riverside",
     },
     {
         title: "City of Glass",
         author: "Paul Auster",
+        branch: "downtown",
+    },
+    {
+        title: "City of test",
+        author: "test",
+        branch: "downtown",
+    },
+    {
+        title: "City of test2",
+        author: "test2",
+        branch: "downtown",
+    },
+    {
+        title: "City of test",
+        author: "test",
+        branch: "test",
     },
 ];
-// Resolvers define how to fetch the types defined in your schema.
-// This resolver retrieves books from the "books" array above.
+// Schema definition
+const typeDefs = `#graphql
+  # A library has a branch and books
+  type Library {
+    branch: String!
+    books: [Book!]
+  }
+
+  # A book has a title and author
+  type Book {
+    id: String
+    title: String!
+    author: Author!
+  }
+
+  # An author has a name
+  type Author {
+    name: String!
+  }
+
+  # Queries can fetch a list of libraries
+  type Query {
+    libraries: [Library]
+  }
+`;
+// Resolver map
 const resolvers = {
     Query: {
-        books: () => books,
+        libraries() {
+            // Return our hardcoded array of libraries
+            return libraries;
+        },
     },
+    Library: {
+        books(parent) {
+            // Filter the hardcoded array of books to only include
+            // books that are located at the correct branch
+            return books.filter((book) => book.branch === parent.branch);
+        },
+    },
+    Book: {
+        // The parent resolver (Library.books) returns an object with the
+        // author's name in the "author" field. Return a JSON object containing
+        // the name, because this field expects an object.
+        author(parent) {
+            return {
+                name: parent.author,
+            };
+        },
+    },
+    // Because Book.author returns an object with a "name" field,
+    // Apollo Server's default resolver for Author.name will work.
+    // We don't need to define one.
 };
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
