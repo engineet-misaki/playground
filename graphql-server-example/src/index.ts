@@ -1,12 +1,27 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
+import { typeDefs } from "./Schema.graphql";
 
-const libraries = [
+const memos = [
   {
-    branch: "downtown",
+    id: "content1",
+    content: "content1",
+    likeNum: 1,
   },
   {
-    branch: "riverside",
+    id: "content2",
+    content: "content2",
+    likeNum: 2,
+  },
+];
+const users = [
+  {
+    id: "user1",
+    name: "name1",
+  },
+  {
+    id: "user2",
+    name: "name2",
   },
 ];
 
@@ -39,44 +54,18 @@ const books = [
   },
 ];
 
-// Schema definition
-const typeDefs = `#graphql
-  # A library has a branch and books
-  type Library {
-    branch: String!
-    books: [Book!]
-  }
-
-  # A book has a title and author
-  type Book {
-    id: String
-    title: String!
-    author: Author!
-  }
-
-  # An author has a name
-  type Author {
-    name: String!
-  }
-
-  # Queries can fetch a list of libraries
-  type Query {
-    libraries: [Library]
-  }
-`;
-
 // Resolver map
 const resolvers = {
   Query: {
-    libraries() {
-      // Return our hardcoded array of libraries
-      return libraries;
+    memos() {
+      return memos;
+    },
+    users() {
+      return memos;
     },
   },
-  Library: {
-    books(parent) {
-      // Filter the hardcoded array of books to only include
-      // books that are located at the correct branch
+  Memo: {
+    user(parent) {
       return books.filter((book) => book.branch === parent.branch);
     },
   },
