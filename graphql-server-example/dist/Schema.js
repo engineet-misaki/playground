@@ -1,6 +1,5 @@
 // Schema definition
-export const typeDefs = `
-
+export const typeDefs = `#graphql
   type Memo {
     id: ID!
     content: String!
@@ -20,6 +19,7 @@ export const typeDefs = `
   type Like {
     id: ID!
     likeUser: User!
+    memoId: ID!
     date: String!
   }
 

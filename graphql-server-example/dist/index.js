@@ -1,94 +1,132 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
-const libraries = [
+// import { typeDefs } from "./Schema";
+const typeDefs = `#graphql
+  type Memo {
+    id: ID!
+    content: String!
+    user: User!
+    like: [Like]!
+    likeNum: Int!
+  }
+
+  
+  type User {
+    id: ID!
+    name: String!
+    grant: Grant!
+    memos: [Memo]!
+  }
+
+  type Like {
+    id: ID!
+    likeUser: User!
+    memoId: ID!
+    date: String!
+  }
+
+  enum Grant {
+    RED
+    GREEN
+    BLUE
+  }
+
+  
+  type Query {
+    memos: [Memo]
+    users: [User]
+  }
+`;
+const memos = [
     {
-        branch: "downtown",
+        id: "1",
+        content: "content1",
+        userId: "1",
+        likeNum: 1,
     },
     {
-        branch: "riverside",
+        id: "2",
+        content: "content1",
+        userId: "2",
+        likeNum: 2,
+    },
+];
+const users = [
+    {
+        id: "1",
+        name: "name1",
+        grant: "RED",
+    },
+    {
+        id: "2",
+        name: "name2",
+        grant: "GREEN",
     },
 ];
 // The branch field of a book indicates which library has it in stock
-const books = [
+const likes = [
     {
-        title: "The Awakening",
-        author: "Kate Chopin",
-        branch: "riverside",
+        id: "1",
+        likeUserId: "1",
+        memoId: "1",
+        date: "2021",
     },
     {
-        title: "City of Glass",
-        author: "Paul Auster",
-        branch: "downtown",
+        id: "2",
+        likeUserId: "2",
+        memoId: "1",
+        date: "2021",
     },
     {
-        title: "City of test",
-        author: "test",
-        branch: "downtown",
+        id: "3",
+        likeUserId: "2",
+        memoId: "2",
+        date: "2021",
     },
     {
-        title: "City of test2",
-        author: "test2",
-        branch: "downtown",
+        id: "4",
+        likeUserId: "1",
+        memoId: "2",
+        date: "2021",
     },
     {
-        title: "City of test",
-        author: "test",
-        branch: "test",
+        id: "5",
+        likeUserId: "1",
+        memoId: "1",
+        date: "2021",
     },
 ];
-// Schema definition
-const typeDefs = `#graphql
-  # A library has a branch and books
-  type Library {
-    branch: String!
-    books: [Book!]
-  }
-
-  # A book has a title and author
-  type Book {
-    id: String
-    title: String!
-    author: Author!
-  }
-
-  # An author has a name
-  type Author {
-    name: String!
-  }
-
-  # Queries can fetch a list of libraries
-  type Query {
-    libraries: [Library]
-  }
-`;
 // Resolver map
 const resolvers = {
     Query: {
-        libraries() {
-            // Return our hardcoded array of libraries
-            return libraries;
+        memos() {
+            return memos;
+        },
+        users() {
+            return users;
+        },
+        // likes() {
+        //   return likes;
+        // },
+    },
+    Memo: {
+        user(parent) {
+            return users.find((user) => user.id === parent.userId);
+        },
+        like(parent) {
+            return likes.filter((like) => like.memoId === parent.id);
         },
     },
-    Library: {
-        books(parent) {
-            // Filter the hardcoded array of books to only include
-            // books that are located at the correct branch
-            return books.filter((book) => book.branch === parent.branch);
+    User: {
+        memos(parent) {
+            return memos.filter((memo) => memo.userId === parent.id);
         },
     },
-    Book: {
-        // The parent resolver (Library.books) returns an object with the
-        // author's name in the "author" field. Return a JSON object containing
-        // the name, because this field expects an object.
-        author(parent) {
-            return {
-                name: parent.author,
-            };
+    Like: {
+        likeUser(parent) {
+            return users.find((user) => user.id === parent.likeUserId);
         },
     },
-    // Because Book.author returns an object with a "name" field,
-    // Apollo Server's default resolver for Author.name will work.
-    // We don't need to define one.
 };
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
