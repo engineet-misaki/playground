@@ -1,41 +1,134 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
-
-// A schema is a collection of type definitions (hence "typeDefs")
-// that together define the "shape" of queries that are executed against
-// your data.
+// import { typeDefs } from "./Schema";
 const typeDefs = `#graphql
-  # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
-
-  # This "Book" type defines the queryable fields for every book in our data source.
-  type Book {
-    title: String
-    author: String
+  type Memo {
+    id: ID!
+    content: String!
+    user: User!
+    like: [Like]!
+    likeNum: Int!
   }
 
-  # The "Query" type is special: it lists all of the available queries that
-  # clients can execute, along with the return type for each. In this
-  # case, the "books" query returns an array of zero or more Books (defined above).
+  
+  type User {
+    id: ID!
+    name: String!
+    grant: Grant!
+    memos: [Memo]!
+  }
+
+  type Like {
+    id: ID!
+    likeUser: User!
+    memoId: ID!
+    date: String!
+  }
+
+  enum Grant {
+    RED
+    GREEN
+    BLUE
+  }
+
+  
   type Query {
-    books: [Book]
+    memos: [Memo]
+    users: [User]
   }
 `;
-const books = [
+
+const memos = [
   {
-    title: "The Awakening",
-    author: "Kate Chopin",
+    id: "1",
+    content: "content1",
+    userId: "1",
+    likeNum: 1,
   },
   {
-    title: "City of Glass",
-    author: "Paul Auster",
+    id: "2",
+    content: "content1",
+    userId: "2",
+    likeNum: 2,
+  },
+];
+const users = [
+  {
+    id: "1",
+    name: "name1",
+    grant: "RED",
+  },
+  {
+    id: "2",
+    name: "name2",
+    grant: "GREEN",
   },
 ];
 
-// Resolvers define how to fetch the types defined in your schema.
-// This resolver retrieves books from the "books" array above.
+// The branch field of a book indicates which library has it in stock
+const likes = [
+  {
+    id: "1",
+    likeUserId: "1",
+    memoId: "1",
+    date: "2021",
+  },
+  {
+    id: "2",
+    likeUserId: "2",
+    memoId: "1",
+    date: "2021",
+  },
+  {
+    id: "3",
+    likeUserId: "2",
+    memoId: "2",
+    date: "2021",
+  },
+  {
+    id: "4",
+    likeUserId: "1",
+    memoId: "2",
+    date: "2021",
+  },
+  {
+    id: "5",
+    likeUserId: "1",
+    memoId: "1",
+    date: "2021",
+  },
+];
+
+// Resolver map
 const resolvers = {
   Query: {
-    books: () => books,
+    memos() {
+      return memos;
+    },
+    users() {
+      return users;
+    },
+    // likes() {
+    //   return likes;
+    // },
+  },
+  Memo: {
+    user(parent) {
+      return users.find((user) => user.id === parent.userId);
+    },
+    like(parent) {
+      return likes.filter((like) => like.memoId === parent.id);
+    },
+  },
+  User: {
+    memos(parent) {
+      return memos.filter((memo) => memo.userId === parent.id);
+    },
+  },
+  Like: {
+    likeUser(parent) {
+      return users.find((user) => user.id === parent.likeUserId);
+    },
   },
 };
 
