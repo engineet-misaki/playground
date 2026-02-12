@@ -1,0 +1,82 @@
+- AWS AppSync
+    - GraphQLベースのリアルタイムAPIサービス
+
+- ダイナモ ローカルセカンダリインデックス 問題24
+- S3 コンソール 問題25
+- 高解像度のCloudWatch 26
+- Lambda 関数のイベントソースマッピング 29
+- Amazon Macie
+- AWS Amplify と AWS AppSync
+- lambda クオータとは
+- codedeploy codebuildの違い 55
+- DynamoDB TTL 56
+- AWS Amplify
+- auto scalingとcodedeploy調べる
+
+- Amplify
+- AppSync
+- ポリシー
+- AWS IAM Identity Center
+    - 今のユーザ管理
+
+## 間違いになりかけ
+- Step FunctionsにはHeartbeatSecondsというping機能あり
+- AWS IAM Identity Center 今のユーザ管理の主流
+- lambdaはメモリが増やせる
+- lambdaのイベントソースマッピング
+- ALB Lambda関数を直接ターゲットとして登録できる機能を提供しています。
+- CloudFormation スタック削除
+- API gateway キャッシュつけれる。TTLもあるよ
+- CloudFormation カスタムリソースとOpenSearch 
+    - openSearchはユーザが必要。マスタユーザもいるよ
+- AWS Amplify と AWS AppSync
+- KMSの暗号化。データキーをKMSから2種類もらう。一つは暗号化用。一つは複合キー問い合わせ用
+
+## 間違った問題と理由
+- role
+    - IAMRoleとIAMポリシーの違い怪しい。
+    - ARNはAWS内のリソースのID
+- AppSync
+    - アプリ知らなかった
+- 凡ミス
+- CloudFormation
+    - 構文。Transformについて
+- lambdaのタイムアウトの挙動
+    - 破棄されること覚えとく
+- アクセストークンの保存先
+    - パラメータストアとシークレットマネージャーの違い詳細に知る
+        - CloudTrail 連携による監査ログ
+        - ローテーション
+        - クロスアカウント
+- ポリシー名
+    - ポリシーは2つ。アクセス許可と信頼。信頼はロールが使えるか。アクセス許可はロールでアクセスできるか。あと、SCPとかで組織に制限とかあるよ
+- CloudFront
+    - Viewer Protocol PolicyとViewer Protocol Policy。
+    - Restrict Viewer Accessは署名付きURL使うとき
+- セッション管理
+    - AWS Systems Manager State Managerに騙された
+    - 基本はキャッシュ
+- Amazon API Gatewayの別のAWSアカウントの認証
+    - Cognitoオーソライザーは、Cognitoユーザープールで管理されるユーザーの認証に使用される
+    - IAMユーザーは組織内のAWSリソースアクセス管理に使用されるものであり、Cognitoユーザープールとは全く異なる認証システムです。
+- Amazon Macie
+    - 機械学習とパターンマッチングを用いて機密データを発見し、データセキュリティリスクを可視化し、そのリスクに対する自動保護を可能にするデータセキュリティサービス
+- deploy
+    - code deployはオンプレにも可能
+    - code pipelineとの違いあいまいかも
+- SQS
+    - 重複排除はFIFOのみ可能
+- CloudWatch 高解像度のカスタムメトリクス
+    - 1秒単位でメトリクスを監視できる
+- lambdaの失敗
+    - デッドレターキューに入れる
+- AMIとcodeDeploy
+- DynamoDB TTL
+- CodeDeployの設定ファイル
+    - appspec.yml
+- AWS Lambda関数と関連インフラストラクチャを効率的にデプロイ
+    - S3とコードパイプライン。どっかで似たような問題間違えたなあ。
+- codepipelineの使い方
+- Amplify 
+    - 静的サイトにも使うよ
+
