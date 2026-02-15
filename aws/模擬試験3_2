@@ -1,0 +1,7 @@
+- elastic been stook調べる
+- CloudFormation スタックの更新調べる
+- CloudFormation ネスト調べる
+- CloudFront OAC
+- クロスアカウントIAMロール
+- CloudWatchエージェント Xレイみたいにデーモンはないか？
+- CloudWatch LogsとLogs Insights XRAYとの比較

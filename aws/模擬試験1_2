@@ -1,0 +1,15 @@
+
+- 問題1 eventBridgeとEC2
+    - イベントバスの理解が甘い
+
+
+
+
+lambda ハンドラ関数の外で何かやる問題あった。
+lambdaの呼び出し
+    - S3に追加：S3 Object Lambda
+    - cognito：Amazon Cognito のポスト認証用の Lambda トリガー
+
+
+API Gateway のリクエストマッピングテンプレート
+     - リクエストやレスポンスをマッピングできる

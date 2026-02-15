@@ -1,0 +1,40 @@
+
+- DynamoDB インデックス
+    - 問題を冷静に読む
+- DynamoDB ScanIndexForward 
+    - 昇順降順操作
+- DynamoDB 条件付き書き込み
+    - 特定の条件を満たす場合のみデータを書き込む機能
+- Lambda 失敗時の処理と非同期呼び出し
+    - DLQより送信先設定機能(Destination Configuration)が今は主流
+- lambda セキュリティ
+    - 呼び出しの制御はリソースポリシー
+- lambda SNSのフィルターポリシー
+    - SNSフィルターとラムダイベントフィルターがある
+- Lambda 環境変数
+    - 同一コードで異なる設定を適用する
+- lambda EFS
+    - lambdaとEFSは統合できるよ
+- API Gateway のデプロイ
+    - API GatewayではAPI変更後、Deploymentを作成しStageに関連付けないと変更は公開されない
+- API Gatewayの認証方式
+    - IAM,cognito,lambdaの3種類
+- X-Rayの基本構成
+    - SDK,デーモン,サービスがある
+- ECSのスケーリング
+    - ターゲット、ステップ、スケジュールがある
+- SQS APIの種類
+    - StartMessageMoveTaskが移動、PurgeQueueが削除
+- CloudFormationスタックの状態遷移
+    - UPDATE_ROLLBACK_FAILEDはロールバック失敗
+- CloudFormation ヘルパースクリプト
+    - 起動やインストールできる
+- Cognitoの2つのサービス
+    - ユーザープールはユーザ認証、IDプールはリソースへの認可
+- S3ライフサイクル管理
+    - 自動削除可能
+- ECRイメージスキャン
+    - コンテナイメージのセキュリティスキャン機能を提供
+- AppConfig ECSとの統合パターン
+    - サイドカー、統合、設定ファイルのみ統合
+- CDK コマンドの種類調べとく
