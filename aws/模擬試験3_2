@@ -1,7 +1,16 @@
-- elastic been stook調べる
+- appConfigエージェントとは
+    - エージェント = サーバー内に常駐してAWSと通信する裏方プログラム。appConfigは設定をキャッシュ
+- Elastic Beanstalk調べる
+    - コードを出すだけでインフラを自動構築してくれるPaaS
 - CloudFormation スタックの更新調べる
 - CloudFormation ネスト調べる
 - CloudFront OAC
+    - CloudFrontとS3の通信制御。暗号化できる。
 - クロスアカウントIAMロール
-- CloudWatchエージェント Xレイみたいにデーモンはないか？
+- CloudWatchエージェント Xレイみたいにデーモンはないか
 - CloudWatch LogsとLogs Insights XRAYとの比較
+    - CloudWatchエージェントは入れて設定すればメモリ使用率とログファイルをAWSに送れる
+    - 送ったログファイルはCloudWatch LogsとLogs Insightsで分析
+    - lambdaはconsoleでログ拾わせれる
+- S3バケットポリシー
+    - ロールやVPC単位で許可できる
