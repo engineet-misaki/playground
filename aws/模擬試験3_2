@@ -8,9 +8,11 @@
     - CloudFrontとS3の通信制御。暗号化できる。
 - クロスアカウントIAMロール
 - CloudWatchエージェント Xレイみたいにデーモンはないか
+    - 必要ない
 - CloudWatch LogsとLogs Insights XRAYとの比較
     - CloudWatchエージェントは入れて設定すればメモリ使用率とログファイルをAWSに送れる
     - 送ったログファイルはCloudWatch LogsとLogs Insightsで分析
     - lambdaはconsoleでログ拾わせれる
 - S3バケットポリシー
     - ロールやVPC単位で許可できる
+
