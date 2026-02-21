@@ -9,6 +9,9 @@
     - CloudWatchエージェントは入れて設定すればメモリ使用率とログファイルをAWSに送れる
     - 送ったログファイルはCloudWatch LogsとLogs Insightsで分析
     - lambdaはエージェント入れなくてもconsoleでログ拾わせれる
+- CloudWatch 高解像度のカスタムメトリクス
+    - 1秒単位でメトリクスを監視できる
+    - 通常は30秒
 
 # cloud trail
 - 誰が何をしたかがわかる
@@ -32,12 +35,37 @@
     - トレースをAWSに送るもの。EC2とかに自前で入れる。lambdaとかはすでに入ってる。
 
 # System manager
-- サーバー管理の機能がいっぱいある
-- サーバにエージェントを使って操作する
+- サーバー管理ツール
+- OSなどの管理をEC2インスタンスに対して一括で実行できる
+- 主な機能
+    - sessionManager sshしないでサーバ接続できる
+    - RunCommand コマンド実行。同時実行のレート制御や、S3にログアップもできる
+    - document 定義。テンプレートもあり、実行するだけで操作できる。
+    - AppConfig 動的に変わる機能フラグなどの設定情報保存
+    - parameterStore パラメータ保存
+    - Maintenance Windows EC2やオンプレミスのシステムへのパッチ適用などをスケジュールする機能
+    - stateManager EC2などのリソースを決められた状態維持。同じパッチでもauto scalingならこっち
 
 # Cloud formation
 - yamlに構成情報を記述してアップすると自動でサーバを作成する
 - 変更セットで変更する。ドラフトで差分を見る
+- CloudFormation 記述内容
+    - Resourcesはどういったコンポーネントを作るか記載
+    - ヘルパースクリプトはインスタンスの起動処理の中で初期設定
+    - Parametersは使いまわすときに便利。アカウントIDとリージョンはすでに疑似パラメータとして登録されてる
+    - Mappingsはdevとprodの場合分けの時使える
+    - Outputsはexportできる
+    - Conditionsは条件に基づいて、作るリソースやOutputsの生成を制御する
+    - 組み込み関数  
+        - Fn::Ref/!Ref 参照
+        - Fn::GetAtt/!GetAtt リソース属性参照。AZなど
+        - Fn::Sub/!Sub 書き換え
+- CloudFormation stack
+    - CloudFormationを実行して構築されるリソース群をCloudFormationスタックという。リソース名は一意
+    - StackSetsはStackをマルチアカウントあるいはマルチリージョンで展開する仕組み
+        - StackSetsを作成する管理用のアカウントとリージョンを1つ決め、そこでCloudFormationを通常通り実行.CUDができる
+    - 値を読み込むときは、import,exportで結合。テンプレートそのまま読み込むときはネストスタック
+    - ポリシーを設定できる
 
 # SAM
 - サーバレスアプリケーションを簡単に作成
@@ -52,6 +80,9 @@
     - cdk deploy deployする。--what-ifつけるとデプロイによってどのような変更があるか表示する
     - cdk diff デプロイ済みのスタックとローカルの CDK コードとの間の差分を表示
 
-
+# SDK
+- プログラミング言語を用いてAWSサービスと対話するためのライブラリ
+- シークレットマネージャーの取得とかで使ったりする
+- 指数関数的バックオフとジッター付きで再試行するロジックがデフォルトで組み込まれている
 
 

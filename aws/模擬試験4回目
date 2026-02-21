@@ -1,0 +1,46 @@
+- cloudFormation変更セット
+- 
+- EC2 インスタンスプロファイル
+
+- プロビジョニング
+- マネージド
+- オンデマンド
+- カナリア
+- アドホック
+
+
+
+
+# 結果
+- cloudFormationの書き方
+    - mappingセクションに何各課
+    - 環境変数に何各課
+- 事前署名付きURL
+- S3の暗号化 KMS利用
+- API gateway 使用量プランとAPIキーの関連付け
+- AWS CloudFormationカスタムリソース
+- SNS 1対多の同時処理に使用する
+- CloudFront Functions
+    - CloudFront ディストリビューション
+- STS
+- SystemManagerAgentの用途
+- ACMはリージョンごとに証明書を発行
+- Secrets Managerのローテーション機能はRDSなどでのみ使用可能
+- クロスアカウントのEventBridge
+- DynamoDBの暗号化
+- Elastic BeanstalkでCloudWatchAgentの導入
+
+# 気になった
+- DynamoDB TTL
+    - streamsで検知しlambda使うこともできる
+- 非同期呼び出しのlambdaのエラーはログに出ないことある
+- apiGatewayのキャッシュはGETのみ
+- CloudWatchメトリクスフィルター
+- ECS キャパシティープロバイダー
+- DynamoDBのパーティションキーはどうアクセスするかが大事
+- AWS Trusted Advisor調べる
+- CloudFormationスタックイベントは通知機能ある
+- stepFunction フィールド調べる
+- CloudTrail はEventBridgeと統合可能。EventBridge はフィルタ出来る
+- API Gatewayの統合タイプ調べる
+
