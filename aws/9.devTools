@@ -1,0 +1,14 @@
+# CodeBuild
+    - pipelineでbuildする。build.spec.ymlとかに設定書く
+# CodeDeploy
+    - pipelineでdeployする。appspec.ymlとかに設定書く
+    - CodeDeploy エージェントやAWS CLIを使うとオンプレミスのdeployもできる
+# CodePipeline
+    - buildやdeployをつなげる
+# CodeArtifact
+    - 成果物を保存できる
+    - 外部のリポジトリをCodeArtifact経由で取得できる。しかもキャッシュつき
+# CodeGrue
+    - マネージドETL(Extract/Transform/Load)サービス。ELTを作成可視化可能。データを変換しデータカタログ作成、s3に保存
+# CodeAmplify
+    - シンプルなバックエンドアプリ構築や静的サイトを簡単に作成
