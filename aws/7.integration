@@ -15,6 +15,10 @@
 - データ変換
     - マッピングテンプレートを使い、VTLという言語で変換
     - Lambda Proxy Integrationの場合はlambda側で変換
+- 統合タイプ
+    - MOCK 固定レスポンス
+    - lambdaプロキシ lambdaとの統合
+    - HTTPプロキシ
 
 # AppSync
 - GraphQLのAPI使いたいときに使用。AWS上の複数のデータソース（DynamoDB, Lambda等）を安全に統合する
@@ -46,3 +50,8 @@
 # StepFunction
 - ワークフローを管理できる
 - 人の手動による承認なども設定可能
+- AWS Step Functions エラー処理機能
+    - Retry：失敗したタスクの自動再試行機能
+    - Catch：エラーを捕捉して別の状態に遷移する機能
+    - Fail：ワークフローを明示的に失敗させる状態
+    - Timeout：タスクの実行時間制限設定

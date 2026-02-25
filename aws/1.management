@@ -7,16 +7,24 @@
     - EMF形式でconsoleに書くと自動で収集してくれる
 - cloud watch エージェント
     - CloudWatchエージェントは入れて設定すればメモリ使用率とログファイルをAWSに送れる
+        - メモリ使用率はデフォルトで送られないので追加設定必要
     - 送ったログファイルはCloudWatch LogsとLogs Insightsで分析
     - lambdaはエージェント入れなくてもconsoleでログ拾わせれる
 - CloudWatch 高解像度のカスタムメトリクス
     - 1秒単位でメトリクスを監視できる
     - 通常は30秒
+- CloudWatch Logs Insights
+    - 対話型のログ分析ツールで、アドホックなクエリ実行や詳細な分析に使用され
+- CloudWatchメトリクスフィルター
+    - ログイベントをリアルタイムで監視
+    - 指定したパターンにマッチするログエントリをカウント
+    - 閾値超えたらカスタムメトリクスとしてCloudWatchに送信
 
 # cloud trail
 - 誰が何をしたかがわかる
 - 管理イベントとデータイベントがある
 - cloud trail insight （有料）使えば異常なイベントを検知できる
+- すべてのAWS APIコールを記録する。IAMロール作成、変更などをEventBridgeに送信可能
 
 # AWS config
 - ルールを作り守ってるか監視する
@@ -47,19 +55,39 @@
     - stateManager EC2などのリソースを決められた状態維持。同じパッチでもauto scalingならこっち
 
 # Cloud formation
-- yamlに構成情報を記述してアップすると自動でサーバを作成する
-- 変更セットで変更する。ドラフトで差分を見る
+- yamlに構成情報を記述してインフラを構築できる
+- 開発や商用などの場合分け
+    - 同じテンプレートで複数のスタックを作る
+    - Parametersセクションにdevやprodを設定し、内容を場合分けする
+- 変更セット
+    - 新しくリリースしたいときは変更セットを作って、スタックに適用する
+    - 変更した差分のみをリリースするのに向いてる
+    - changesセクションに内容を記載することもある
+- ドラフト
+    - cloudFormationとAWSリソースの差分
+    - AWSリソースをコンソールなどから変更したときにテンプレートと見比べたりできる
 - CloudFormation 記述内容
-    - Resourcesはどういったコンポーネントを作るか記載
-    - ヘルパースクリプトはインスタンスの起動処理の中で初期設定
-    - Parametersは使いまわすときに便利。アカウントIDとリージョンはすでに疑似パラメータとして登録されてる
-    - Mappingsはdevとprodの場合分けの時使える
-    - Outputsはexportできる
-    - Conditionsは条件に基づいて、作るリソースやOutputsの生成を制御する
+    - Resources 作成したいリソースを記載。(例)EC2
+        - EC2の場合、UserDataを書けば、起動時にスクリプト実行可能。cfn-initなどはここに書く。
+    - Parameters テンプレート実行時の入力値
+        - AllowedValueで選択肢を設定
+        - 使いまわすときに便利。
+        - アカウントIDとリージョンはすでに疑似パラメータとして登録されてる
+    - Rules Parametersに渡された値をバリデーション
+    - Mappings キーと値のペアを定義。
+        - 静的な条件分岐値に使用。
+    - Conditions true,falseの値を定義
+        - !Equalsとかの関数使って、動的な条件分岐を記載
+    - Outputsは別スタックに値をexportできる。Fn::ImportValueで取得
+    - Transform SAM使うときなどに記載。実行時に一番最初に実行される
+    - Hooks プロビジョニング中に追加のアクションを呼び出すフックを定義
+        - デプロイ前にlambdaを走らせるなど
+    - MetaData 追加情報記述。ラベルとかつけたりしてる
     - 組み込み関数  
         - Fn::Ref/!Ref 参照
         - Fn::GetAtt/!GetAtt リソース属性参照。AZなど
         - Fn::Sub/!Sub 書き換え
+- コード内(lambdaなど)で設定値使うときは環境変数
 - CloudFormation stack
     - CloudFormationを実行して構築されるリソース群をCloudFormationスタックという。リソース名は一意
     - StackSetsはStackをマルチアカウントあるいはマルチリージョンで展開する仕組み
@@ -70,6 +98,20 @@
     - カスタムリソースは、Cloudformationでサポートされていないリソースをテンプレートに定義・実装出来る
     - カスタムリソースは、スタックの作成・更新・削除をトリガーに実行される
     - 実態はlambda呼び出して何とかしてる
+- スタックイベント
+    - 作成、更新、削除の時に通知
+- スタックポリシー
+    - スタック内のリソースが意図しない更新されるのを防ぐ
+- ヘルパースクリプト
+    - CloudFormation が EC2 と連携するための補助スクリプト群
+    - cfn-init
+        - AWSの初期実行時、AWS::CloudFormation::Init:の内容を実施
+    - cfn-signal
+        - 「EC2のセットアップ完了」をCloudFormationに通知する
+
+- ネスト
+    - 大規模なリソース群を生成したいときは、細かく作ってネストさせてまとめる
+    - 親ファイルでTypeを使って別のテンプレートを呼び出す
 
 # SAM
 - サーバレスアプリケーションを簡単に作成
