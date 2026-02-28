@@ -1,0 +1,22 @@
+- KMS 対象暗号キーと非対象暗号キー
+- ファンアウトアーキテクチャ問題
+- RDSのリードレプリカ 非同期であること
+- X-rayとcloudWatchメトリクスの違い
+- lambda ハンドラめそっと。　Lambda 実行環境の再利用の詳細
+- ${stageVariable.stageVariableName} API Gateway ステージ変数の詳細
+- AWS_PROFILE について調べる
+- Trusted Advisor
+- $LATEST バージョンは最新の公開バージョン。これとprodが被ることもあるのか調べる
+- stepFunction 属性 HeartbeatSeconds 調べる
+
+PDF問題
+1. d
+2. a, b*  adと迷った
+3. a, e* cと迷った
+4. b, d aと迷った
+5. a
+6. d
+7. b
+8. b
+9. c と迷った。apiGatewayは要確認だな
+10. d

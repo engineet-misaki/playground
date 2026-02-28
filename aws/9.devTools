@@ -3,6 +3,13 @@
 # CodeDeploy
     - pipelineでdeployする。appspec.ymlとかに設定書く
     - CodeDeploy エージェントやAWS CLIを使うとオンプレミスのdeployもできる
+    - デプロイ方式
+        - EC2:インプレースデプロイ インスタンスを順番に停止→更新→起動。コスト最安
+            - Lifecycle Hooksがあり、AppSpec.ymlで指定
+        - EC2:Blue/Greenデプロイ  新しい環境（Green）を作る。検証後にトラフィック切り替え
+        - lambda:All-at-once すぐ反映させる。
+        - lambda:Canary 10% → 5分待つ。問題なければ100%
+        - lambda:Linear 10%ずつ1分ごとに増やす
 # CodePipeline
     - buildやdeployをつなげる
 # CodeArtifact
@@ -10,5 +17,15 @@
     - 外部のリポジトリをCodeArtifact経由で取得できる。しかもキャッシュつき
 # CodeGrue
     - マネージドETL(Extract/Transform/Load)サービス。ELTを作成可視化可能。データを変換しデータカタログ作成、s3に保存
-# CodeAmplify
-    - シンプルなバックエンドアプリ構築や静的サイトを簡単に作成
+# Amplify
+    - 主にバックエンド開発を楽にする
+    - シンプルなバックエンドアプリ構築可能。
+        - cognitoやDynamoDBなど自動でセットアップしてくれる
+        - 簡単なCURDならノーコード。複雑なのもlambdaで書ける
+    - 静的サイトを簡単に作成。
+        - Amplify Hosting 内部的に S3 と CloudFront を使用し、静的サイトホスティングをフルマネージド
+    TODO もっと調べる
+
+# ECR
+    - コンテナイメージを保存。dockerHubみたいなもの
+    - ECRイメージスキャン コンテナイメージのセキュリティスキャン機能を提供。イメージビルド直後に行う

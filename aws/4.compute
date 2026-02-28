@@ -12,17 +12,27 @@
 - EC2のコンテナ作るより手軽。
 - EventBridgeでスケジュールの定期実行できる
 
-# ECSとEKS
-- ともにEC2とファーゲートにデプロイできる
+# ECS
+- ECSサービス タスク実行数などを定義
+- ECSタスク Dockerイメージやメモリを定義
+
+# EKS
+- IRSA(IAM Roles for Service Accounts)EKSでPodにIAM権限を付与する仕組み。
+- Horizontal Pod Autoscaler CPU使用率に応じてPodを増やしたりできる
+- kubectl applyコマンドで内容反映する
+
 
 # lambda
 - APIゲートウェイと連携できる
 - SQSにためて非同期実行とかもできる
 - S3 Object LambdaやAmazon Cognito のポスト認証用の Lambda トリガーなどトリガーで連携できるサービスある
 - consoleにログ出すとcloudWatchが記録してくれる
+    - EMF形式にするとカスタムメトリクス送れる
 - メモリが増やせるのでCPU足りないときは実施する
 - ALBはLambda関数をバックエンドとして設定できる機能がある
-- lambdaはデプロイごとにバージョンを持ち、それのポインタをエイリアスと呼ぶ
+- エイリアス 
+    - lambdaはデプロイごとにバージョンを持ち、それのポインタをエイリアスと呼ぶ
+    - $LATEST バージョンは最新の公開バージョン
 - イベントのフィルタリング機能がある
 - X-rayは有効化オプションをONにするだけで使用可能。デーモンは必要ない
 - LambdaのENI
@@ -36,7 +46,7 @@
     - ウォームスタートの時はハンドラ関数内のみ実行
     - プロビジョニングされた同時実行数を使うとウォームスタートできる
 - lambda イベントソースマッピング
-    - SQSなどとつなぐ。要はlambdaがポーリングするらしい
+    - SQSやストリームなどとつなぐ。要はlambdaがポーリングするらしい
 - lambdaの失敗
     - 2開催実行後破棄される
     - SQSのデットレターキュー入れるか、送信先設定機能(Destination Configuration)でlambdaやほかの機能に連携

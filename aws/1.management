@@ -8,6 +8,7 @@
 - cloud watch エージェント
     - CloudWatchエージェントは入れて設定すればメモリ使用率とログファイルをAWSに送れる
         - メモリ使用率はデフォルトで送られないので追加設定必要
+        - ログファイルの場所を設定するだけでCloudWatchLogsに送ってくれる
     - 送ったログファイルはCloudWatch LogsとLogs Insightsで分析
     - lambdaはエージェント入れなくてもconsoleでログ拾わせれる
 - CloudWatch 高解像度のカスタムメトリクス
@@ -51,6 +52,7 @@
     - document 定義。テンプレートもあり、実行するだけで操作できる。
     - AppConfig 動的に変わる機能フラグなどの設定情報保存
     - parameterStore パラメータ保存
+        - アドバンストパラメータという有料機能あり
     - Maintenance Windows EC2やオンプレミスのシステムへのパッチ適用などをスケジュールする機能
     - stateManager EC2などのリソースを決められた状態維持。同じパッチでもauto scalingならこっち
 
@@ -69,6 +71,7 @@
 - CloudFormation 記述内容
     - Resources 作成したいリソースを記載。(例)EC2
         - EC2の場合、UserDataを書けば、起動時にスクリプト実行可能。cfn-initなどはここに書く。
+        - DBの場合、DeletionPolicy: Retainを設定するとスタック削除してもデータ残る
     - Parameters テンプレート実行時の入力値
         - AllowedValueで選択肢を設定
         - 使いまわすときに便利。
@@ -79,7 +82,9 @@
     - Conditions true,falseの値を定義
         - !Equalsとかの関数使って、動的な条件分岐を記載
     - Outputsは別スタックに値をexportできる。Fn::ImportValueで取得
-    - Transform SAM使うときなどに記載。実行時に一番最初に実行される
+    - Transform 
+        - SAM使うときなどに記載。実行時に一番最初に実行される
+        - デプロイにも使う。AWS::CodeDeploy::BlueGreenなど指定可能
     - Hooks プロビジョニング中に追加のアクションを呼び出すフックを定義
         - デプロイ前にlambdaを走らせるなど
     - MetaData 追加情報記述。ラベルとかつけたりしてる
@@ -116,6 +121,10 @@
 # SAM
 - サーバレスアプリケーションを簡単に作成
 - yamlで書き、cloudFormationに変換するもの。実態はtransform行のあるcloudFormationテンプレート
+- 主なコマンド
+    - sam build デプロイ用アーティファクト作成
+    - sam deploy CloudFormationスタックとしてデプロイ。sam packageを内包
+    - sam init SAMアプリのひな形作成
 
 # CDK
 - tsなどでAWSを定義できる
@@ -123,7 +132,10 @@
     - cdk init テンプレートからプロジェクトを作成
     - cdk synth コードをコンパイルしてyaml生成
     - cdk bootstrap CDK アプリケーションを初めてデプロイする際に一度だけ実行する準備コマンド。S3作ったりする
-    - cdk deploy deployする。--what-ifつけるとデプロイによってどのような変更があるか表示する
+    - cdk deploy 
+        - deployする。CloudFormation テンプレートを AWS に送信し、関連アセットを専用の S3 バケットにアップロードする
+        - --what-ifつけるとデプロイによってどのような変更があるか表示する
+        - lookupContext使うとデプロイ前にAWSへ問い合わせして情報とってくる。CFのimportValueと同じようなこと実現
     - cdk diff デプロイ済みのスタックとローカルの CDK コードとの間の差分を表示
 
 # SDK
