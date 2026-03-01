@@ -1,7 +1,9 @@
 # ApiGateway
 - APIの窓口
 - 認証
-    - IAM認証,Cognito,Lambda Authorizer,APIキー
+    - IAM認証,Cognito,LambdaAuthorizer,APIキー
+        - IAM認証方法 IAM 署名（SigV4）されたリクエストを送る
+            - 署名とはリクエスト内容をSecret Access Keyでハッシュ化したもの
 - アクセス制御できる
     - １秒当たり何回まで見たいな感じ
 - 種類が２つ
@@ -12,6 +14,10 @@
             - 月間クォータ: 期間内で何回か
     - HTTP 安くて速い
 - ステージ機能がある
+    - APIをデプロイした後、ステージを作ることでgatewayが使える。
+        - (例) https://api-id.execute-api.region.amazonaws.com/dev dev部分がステージ
+    - ステージ変数 ステージ単位で持てるキー・バリューの変数
+        - ${stageVariables.xxx} という形式で使う
 - データ変換
     - マッピングテンプレートを使い、VTLという言語で変換
     - Lambda Proxy Integrationの場合はlambda側で変換
@@ -34,6 +40,7 @@
 - １つのメッセージを複数のサービスに送る仕組み
 - トピック(1つのメッセージの受口)を作り、それをサービス(SQSやSMS)などにサブスクライブさせる
 - 1対多の同時処理に利用できる。一つのキューに対してlambdaを3つ実行など
+    - この場合、失敗した場合の処理のリトライが難しいのでSNSの後にSQSはさむパターンがある。
 - フィルターを設定してサービスに通知する内容を制限できる
 
 # EventBridge
@@ -50,8 +57,20 @@
 # StepFunction
 - ワークフローを管理できる
 - 人の手動による承認なども設定可能
-- AWS Step Functions エラー処理機能
-    - Retry：失敗したタスクの自動再試行機能
-    - Catch：エラーを捕捉して別の状態に遷移する機能
-    - Fail：ワークフローを明示的に失敗させる状態
-    - Timeout：タスクの実行時間制限設定
+- 一つのアプリケーションの単位をステートマシンという。State定義JSONに設定記載
+- AWS Step Functions のよく出る設定（属性）
+    - Resource 何を呼び出すか定義
+    - TimeoutSeconds 最大実行時間
+    - HeartbeatSeconds 長時間タスクの生存確認
+    - Retry エラー時の再試行
+        - ErrorEquals 対象エラー
+            - States.ALLやStates.Timeoutがある
+        - MaxAttempts 最大試行回数
+        - BackoffRate 再試行時の指数バックオフ値
+    - Catch エラーが起きたら別のStateに遷移する。Retryが終わったら実行される
+        - ErrorEqualsとnextがある
+    - エラー処理機能
+        - Retry：失敗したタスクの自動再試行機能
+        - Catch：エラーを捕捉して別の状態に遷移する機能
+        - Fail：ワークフローを明示的に失敗させる状態
+        - Timeout：タスクの実行時間制限設定
