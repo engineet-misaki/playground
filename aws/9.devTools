@@ -12,6 +12,7 @@
         - lambda:Linear 10%ずつ1分ごとに増やす
 # CodePipeline
     - buildやdeployをつなげる
+    - 各項目の仕切りをステージ、ステージで処理を実行する人をアクションプロバイダという
 # CodeArtifact
     - 成果物を保存できる
     - 外部のリポジトリをCodeArtifact経由で取得できる。しかもキャッシュつき

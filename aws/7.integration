@@ -18,8 +18,9 @@
         - (例) https://api-id.execute-api.region.amazonaws.com/dev dev部分がステージ
     - ステージ変数 ステージ単位で持てるキー・バリューの変数
         - ${stageVariables.xxx} という形式で使う
-- データ変換
-    - マッピングテンプレートを使い、VTLという言語で変換
+- マッピングテンプレート
+    - 受け取ったリクエストを別の形式に変換する仕組み。VTLという言語で変換
+    - モック統合の時はこれでレスポンスを作成
     - Lambda Proxy Integrationの場合はlambda側で変換
 - 統合タイプ
     - MOCK 固定レスポンス
