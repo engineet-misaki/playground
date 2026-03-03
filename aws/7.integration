@@ -18,6 +18,9 @@
         - (例) https://api-id.execute-api.region.amazonaws.com/dev dev部分がステージ
     - ステージ変数 ステージ単位で持てるキー・バリューの変数
         - ${stageVariables.xxx} という形式で使う
+- リソース
+    - APIのパスのこと
+        - https://abc123.execute-api.ap-northeast-1.amazonaws.com/dev(ステージ)/users(これ)
 - マッピングテンプレート
     - 受け取ったリクエストを別の形式に変換する仕組み。VTLという言語で変換
     - モック統合の時はこれでレスポンスを作成
@@ -26,6 +29,8 @@
     - MOCK 固定レスポンス
     - lambdaプロキシ lambdaとの統合
     - HTTPプロキシ
+- カスタムドメイン
+    - Base Path MappingとRoute53のＡ(Alias)レコード使う
 
 # AppSync
 - GraphQLのAPI使いたいときに使用。AWS上の複数のデータソース（DynamoDB, Lambda等）を安全に統合する
@@ -36,6 +41,9 @@
     - コンシューマーが処理を実行している際に他のコンシューマからメッセージが参照されないようにする
 - SQS APIの種類
     - StartMessageMoveTaskが移動、PurgeQueueが削除
+- バッチサイズとバッチウィンドウ
+    - バッチサイズは何件たまるまで実行しないという制御
+    - バッチウィンドウはたまってなくても何秒後には実施という制御
     
 # SNS
 - １つのメッセージを複数のサービスに送る仕組み

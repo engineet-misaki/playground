@@ -1,5 +1,6 @@
 # CodeBuild
     - pipelineでbuildする。build.spec.ymlとかに設定書く
+    - buildしたものはS3か、ECRに保存する
 # CodeDeploy
     - pipelineでdeployする。appspec.ymlとかに設定書く
     - CodeDeploy エージェントやAWS CLIを使うとオンプレミスのdeployもできる
@@ -16,6 +17,8 @@
 # CodeArtifact
     - 成果物を保存できる
     - 外部のリポジトリをCodeArtifact経由で取得できる。しかもキャッシュつき
+    - ログインして、publishコマンド打つと登録できる
+    - codepipelineのpre-buildでartifactにログインする必要ある
 # CodeGrue
     - マネージドETL(Extract/Transform/Load)サービス。ELTを作成可視化可能。データを変換しデータカタログ作成、s3に保存
 # Amplify
