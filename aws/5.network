@@ -7,7 +7,7 @@
 - 配信サービス
 - ACM証明書はus-east-1で作る必要がある
     - ALBのACMはリージョンごとに証明書を発行・管理する
-- HTTPS強制 するときは Viewer Protocol Policyを設定
+- HTTPS強制するときは Viewer Protocol PolicyとOrigin Protocol Policyを設定
 - OAC CloudFrontとS3の通信制御のこと。暗号化できる。バケットポリシーはそのままでOK
 - Lambda@Edge cloudfrontのエッジロケーションからコードを実行するLambda
 - フィールド単位で暗号化できる

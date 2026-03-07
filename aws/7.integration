@@ -12,6 +12,10 @@
             - Rate制限: １秒当たり何回か
             - Burst制限: 瞬間的に許す最大数
             - 月間クォータ: 期間内で何回か
+        - リクエスト制限
+            - ユーザごとにAPIキーを作成
+            - Usage Planで秒あたりや期間上限を設定
+            - APIキーをplanに追加し、planをステージに紐づけ
     - HTTP 安くて速い
 - ステージ機能がある
     - APIをデプロイした後、ステージを作ることでgatewayが使える。
@@ -27,13 +31,20 @@
     - Lambda Proxy Integrationの場合はlambda側で変換
 - 統合タイプ
     - MOCK 固定レスポンス
-    - lambdaプロキシ lambdaとの統合
+    - lambdaプロキシ 
+        - WebSocket 通信にも使える
+    - Lambda Integration (Non-Proxy)    
+        - mappingテンプレートでクエリやレスポンスを変換 
     - HTTPプロキシ
 - カスタムドメイン
-    - Base Path MappingとRoute53のＡ(Alias)レコード使う
+    - ドメイン発行→Base Path Mapping→Route53のＡ(Alias)レコード設定の手順
+        - 通常のAレコード(address)ではないので注意
 
 # AppSync
 - GraphQLのAPI使いたいときに使用。AWS上の複数のデータソース（DynamoDB, Lambda等）を安全に統合する
+- apiGatewayに近い。エンドポイントとDBの仲介役。BFFみたいな感じ。
+- amplifyでgraphQL使うと裏でappSync使ってくれるから親和性高い
+- WebSocket 通信が可能
 
 # SQS
 - 重複排除はFIFOのみ可能
@@ -78,8 +89,5 @@
         - BackoffRate 再試行時の指数バックオフ値
     - Catch エラーが起きたら別のStateに遷移する。Retryが終わったら実行される
         - ErrorEqualsとnextがある
-    - エラー処理機能
-        - Retry：失敗したタスクの自動再試行機能
-        - Catch：エラーを捕捉して別の状態に遷移する機能
-        - Fail：ワークフローを明示的に失敗させる状態
-        - Timeout：タスクの実行時間制限設定
+    - Fail ワークフローを明示的に失敗させる状態。catchした後に呼び出したりするステップ
+
