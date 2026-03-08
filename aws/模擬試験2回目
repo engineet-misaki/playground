@@ -80,3 +80,9 @@
 - Amplify 
     - 静的サイトにも使うよ
 
+
+
+- KMS カスタマー管理キー
+- AppSync apigatewayに近い。amplifyでgraphQL使うと裏でappSync使ってくれるから親和性高い
+- WebSocketプロトコルはlambdaとapiGatewayでも使える
+

@@ -55,3 +55,10 @@
     - シンプルキャッシュ
 - redisCached
     - ソートなどの高機能キャッシュ
+- 種類
+    - Lazy Loading キャッシュ見てなければアプリがDBから取得
+    - Read Through キャッシュ見てなければキャッシュがDBから取得
+    - Write Through 書き込み時に キャッシュとDB両方に書く。
+    - Write Back（Write Behind） キャッシュだけ先に書く方式。
+    - Lazy LoadingとWrite Throughの組み合わせがよく出る
+

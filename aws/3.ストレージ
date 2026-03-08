@@ -18,12 +18,11 @@
     - 有効期限を設定でき、URL知ってる人だけアクセスできる
     - APIは、S3 GeneratePresignedUrl API
 - aws:SecureTransportを有効にするとHTTPS強制
-- S3 Transfer Acceleration アップロード早くする
 - 暗号化
     - SSE-S3 AWS管理キー	
     - SSE-KMS KMSキー使用。アクセス制御やtrailと組み合わせが聞かれる
 - クロスアカウント共有 KMSで暗号化して、キーとIAM両方のポリシー許可、共有先で再暗号化の手順
-- S3　の権限には、バケットレベルのアクションとオブジェクトレベルのアクションがある
+- S3の権限には、バケットレベルのアクションとオブジェクトレベルのアクションがある
     - s3:ListBucket（一覧表示）リソース ARN はバケットを指す
         - "Resource": "arn:aws:s3:::your-bucket-name"
     - s3:GetObject（取得）リソース ARN はバケット内のすべてのオブジェクトを指す
