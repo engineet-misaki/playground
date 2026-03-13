@@ -1,0 +1,58 @@
+
+# cloud watch
+- Logs Insights ログを分析
+
+# appConfig
+- リソースがルールを準拠しているか監視できる
+- クエリを使用してリソースの変更履歴を取得できる
+
+# AWS organizations
+- 複数のアカウントを一元管理
+- OUという単位でグループ化
+- SCP
+    - 組織のルートやOU、アカウントに適用できるポリシー
+    - デフォルトはfullアクセス。明示的に拒否必要
+- 組織単位で一括請求
+
+# ControlTower
+- Organizations環境を自動で作るサービス
+
+# Service Catalog
+- 承認済みのCloudFormationテンプレートのカタログを作成し、開発者がセルフサービスでそれらをプロビジョニングできるようにする
+- 許可されたcloudFormationを使わせたいみたいなことっぽい
+- 用語
+    - Product	配布するテンプレート
+    - Portfolio	Productの集合
+    - Provision	実際にリソースを作る
+- Launch Constraint(起動制約) ユーザーがスタックを作るとき別のIAMロールで実行する
+
+# AWS Systems Manager
+- AWS Systems Manager Inventory EC2フリートにインストールされているソフトウェアや OS の設定を収集・管理
+- Session Manager
+    - SSH使わずEC2に接続
+    - SSMマネージャーが必要
+- Run Command 全EC2にコマンド実行
+
+# AWS Personal Health Dashboard
+- AWSアカウントに影響するAWS障害を知らせるサービス
+
+# Service Quotas
+- 上限値の引き上げを行う画面
+
+# CloudFormation 
+- カスタムリソース CloudFormation が標準でサポートしていないリソースをネイティブリソースのようにテンプレート内で定義できる仕組み
+- スタックステータス
+    - OUTDATED 更新されてない状態。StackSet差分
+
+# AWS Prometheus (AMP)
+- オープンソースのPrometheusをAWS上で提供
+- コンテナ監視し情報を抽出する。アラートとかも出せる
+
+# AWS Grafana
+- DBに保存されたログに対して、リアルタイムにクエリを実行し表示
+
+# AWS Resource Groups
+- タグベースのリソース管理
+
+# AWS Resource Access Manager
+- AWSアカウント間でリソースを共有するサービス

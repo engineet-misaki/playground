@@ -1,0 +1,34 @@
+
+# S3
+- アクセスロギング オブジェクトへのアクセス記録を取得
+- S3 Object Lock 削除や上書きできなくする
+    - コンプライアンスモード 管理者であっても変更や削除ができない
+    - ガバナンスモード 
+        - オブジェクトの削除や上書きを防ぐ
+        - s3:BypassGovernanceRetention という IAM 権限を持つユーザーは、オブジェクトを削除可能
+    - リーガルホールド オブジェクトロックとは別で削除や上書き保護する機能
+- ストレージ種類
+    - Standard	普通のS3
+    - Intelligent-Tiering	アクセス頻度が自動変化。アクセス頻度が分からないとき使う
+    - Standard-IA	低頻度アクセス(Infrequent Access)
+    - One Zone-IA	1AZのみ。安いけどAZ障害に弱い
+    - Glacier Instant Retrieval	アーカイブだけど即取得
+    - Glacier Flexible Retrieval	数分〜数時間
+    - Glacier Deep Archive	12時間以上
+
+# EBS
+- EBS ボリュームのサイズ変更
+    - AWS マネジメントコンソール、CLI、または API を使用して EBS ボリュームのサイズを大きくする
+    - インスタンスのOSに対して、基盤となるディスクを認識させ、新しく利用可能になった領域までファイルシステムを拡張するよう指示する
+# EFS
+- VPC 内の EC2 インスタンスからアクセスするための入り口として、マウントターゲットが必要
+
+# AWS Data Lifecycle Manager
+- 定期的なバックアップの実施
+- EBSのライフサイクル管理可能
+
+# AWS Backup
+- バックアップをスケジュールして取得
+- VaultLock バックアップデータを不変にする
+
+

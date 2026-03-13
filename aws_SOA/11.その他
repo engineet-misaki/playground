@@ -1,0 +1,6 @@
+
+- netstat -an | grep LISTEN 
+    - サーバで現在 LISTEN（待ち受け）しているポートを確認するコマンド
+
+- sufficient
+

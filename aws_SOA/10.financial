@@ -1,0 +1,17 @@
+
+# TrustedAdviser
+- ベストプラクティスを教えてくれる
+- AWSのサポートプランによって提供内容変わる
+
+# Cost Explorer
+- コスト分析
+- Savings Plans
+    - 一定額の利用を1年または3年コミットする代わりに割引を受ける」料金制度
+    - Compute Savings Plans
+        - 一番柔軟な割引
+    - EC2 Instance Savings Plans
+        - EC2専用割引でインスタンスファミリー固定
+    - reservedInstanceより柔軟でインスタンス変更、LambdaやFargateに適用も可能
+
+# AWS Budgets
+- 予算アラート

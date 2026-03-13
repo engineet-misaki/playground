@@ -1,0 +1,16 @@
+
+# RDS
+- RDS Performance Insights DB負荷をグラフで視覚的に表示
+- RDS の Enhanced Monitoring インスタンスの OS 状態を詳しく知る
+
+# Aurora 
+- バックトラック機能でデータを一定期間巻き戻し可能
+- ポイントインタイムリカバリー 
+    - 任意の時点にデータベースを復元
+    - 新しいデータベースエンドポイントが発行される
+- Aurora Serverless
+    - DBサーバーを自分でサイズ管理しなくていいAurora
+
+# AWS Database Migration Service
+- データベースの移行や継続的なレプリケーション（CDC）を行うためのサービス
+

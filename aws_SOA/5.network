@@ -1,0 +1,84 @@
+
+# NLB
+- 第4層で働く
+- パケット送るだけなので低レイテンシー
+- 固定IP可能
+- ElasticIpも付けられる
+
+# ALB
+- 第7層で働く
+- HTTPを理解し処理するので、NLBよりレイテンシーが高い
+- ALBは負荷が高いため自動でスケーリングしてる。だから、DNS解決してて固定IP不可
+    - AWS Global Acceleratorで固定IPつけられる
+- stickyセッション 
+    - 特定のユーザーからの一連のリクエストを、セッションが作成された同じ EC2 インスタンスに常にルーティング
+    - cloudFrontがある場合はキャッシュビヘイビアを編集し、セッション Cookie をオリジンに転送する必要がある
+
+
+# CLB
+- 旧世代のLB
+- レガシーアプリの時使うことある
+
+# GWLB 
+- ネットワークセキュリティ装置のロードバランサ
+
+# AWS WAF
+- DDoS攻撃対策（L7攻撃）
+
+# AWS Shield
+- DDoS攻撃対策（L3/L4攻撃）
+- standardは自動で有効にされてる
+- Advanced コスト保護や攻撃可視化が可能
+
+# AWS Network Firewall
+    - VPCのネットワークトラフィックを検査する。
+    - ドメイン名のブロックもできる。NACLの強化版みたいなイメージ
+
+# AWS Firewall Manager
+- 複数アカウントのWAFなどを一括管理   
+
+# cloudFront 
+- CloudFront-Is-Mobile-Viewer ヘッダーつけるとmobile判定できる
+- Origin Shield : オリジンの前に配置されるキャッシュレイヤー
+
+# Route53
+- DNSサービス
+- アマゾンリソースの名前解決はエイリアスレコード
+- Route 53 Resolver
+    - VPCとオンプレミス間の名前解決する
+    - Route 53 Resolver DNS Firewall
+        - VPC内のリソースがインターネット上のドメイン名を問い合わせる際のDNSクエリを検査し、定義したルールに基づいて通信を許可またはブロックする
+- ルーティングポリシー
+    - フェイルオーバーや地理的ルーティングなどがある
+
+# AWS Direct Connect
+- オンプレとAWSを専用線でつなぐサービス
+
+# ゲートウェイ
+- InternetGateway VPCとインターネットの内と外の両方の接続に使う
+- NatGateway VPCからインターネットへの接続に使う
+- Egress-only-gateway IPv6のNatGateway
+
+# AWS Transit Gateway
+- VPCやオンプレネットワークをハブ型で接続するサービス
+- 複数のVPCPeeringを中継する
+
+# VPC
+-  VPC Flow Logs
+    - ENIのトラフィックをキャプチャする
+- VPC Peering
+    - VPCをつなぐ
+- VPC エンドポイント
+    - ゲートウェイ型 
+    - interface型 ENIとサービス間をprivateLinkでつなぐ
+    - エンドポイントポリシーが設定可能
+- EC2に接続できないときのトラブルシューティング チェックする順番
+    - Security Group SSH (TCP 22) が許可されていない
+    - NACL NACLが22番ポートを拒否している
+    - publicIp  EC2にPublic IPがない
+    - RouteTable パブリックサブネットの条件 0.0.0.0/0 → Internet Gatewayを満たしてない。
+    - IGW 設置されてない
+
+# AWS Global Accelerator 
+- ユーザー → AWS アプリまでの通信を「最短・安定ルート」に乗せるためのネットワークサービス
+- DNSキャッシュを避けたい、リージョン障害時の高速フェイルオーバーなどで使用

@@ -1,0 +1,15 @@
+
+# AWS TransferFamily
+- オンプレミスからFTPによるファイル転送
+
+# AWS DataSync
+- エージェントをインストールして大規模なデータ転送
+
+# AWS Storage Gateway
+- オンプレにいながらAWSストレージをマウントする
+- 種類
+    - File Gateway : NFS / SMB → S3
+    - Volume Gateway : iSCSI → EBS
+    - Tape Gateway : 仮想テープライブラリ バックアップ要素
+
+    
