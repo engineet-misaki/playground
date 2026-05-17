@@ -1,10 +1,56 @@
 
 # cloud watch
-- Logs Insights ログを分析
+- Logs Insights 
+    - ログを分析。視覚化機能、リアルタイム分析。SQLライク。
+    - statsコマンド(group by)と count関数を使う
+- Contributor Insights 
+    - LogsInsightsとは違って自動で上位のエラーを発見可能
+- Application Insights 
+    - アプリケーションのパフォーマンス監視とリソース使用状況の分析
+    - 手動設定なしで問題を自動検出＆原因分析
+- Container Insights
+    - CloudWatchエージェントで設定有効化すると見れる
+    - より細かいメトリクスがわかる
+    - インフラストラクチャメトリクス（CPU使用率、メモリ使用率、ネットワークトラフィックなど）を収集
+- CloudWatch Synthetics 
+    - Canary（カナリア）:
+        - 実際のユーザーの代わりにボットが定期的にアクセスして、サイトやAPIが正常に動くかチェックする仕組み
+        - DNS解決とDNSホスト名の有効化必要
+    - CloudWatchメトリクス: 自動的にメトリクスを送信し、アラーム設定が可能
+- cloud watch RUM(Real User Monitoring)
+    - Sentry的なやつ。フロントのログ収集
+    - App Monitor 「どのWebアプリを監視するか」定義する設定リソース。HTMLに埋め込むjsファイル
+- ALBからの情報収集 
+    - リクエストのカウント系や時間を取得できる
+    - RequestCount：処理されたリクエストの総数
+    - TargetResponseTime：ターゲットからの平均応答時間
+- 復旧アクション CloudWatchアラームをトリガーで実施できる
+- procstatプラグイン 特定のプロセスの状態を監視したいときに使うオプション
+- Cloudwatchメトリクスエクスプローラー  
+    - タグやリソースプロパティに基づいてメトリクスをフィルタリング、集計、可視化することが可能
+- 詳細モニタリング 1分ごとのモニタリングに変更する
+- メトリクスフィルター ログから数値を作る仕組み
+- データ保護ポリシー ログの中身を安全にする機能。重要情報マスクする
+- サブスクリプションフィルタ kinesisなどにリアルタイムでデータ送れる
+- cloudWatchLogs 
+    - AWS上のログを集めて、検索・分析・監視するサービス
+    - メトリクスフィルター使うとLogsからメトリクス作れる
+    - メトリクス作らないとアラームできない
 
-# appConfig
-- リソースがルールを準拠しているか監視できる
+# AWS Config
+- リソースの状態を記録し続けるサービス
 - クエリを使用してリソースの変更履歴を取得できる
+- S3にスナップショット保存可能
+- Config Rules
+    - リソースがルールを準拠しているか監視できる
+    - SNSと直接連携できる
+- Config Aggregator
+    - 複数アカウント・複数リージョンのConfigをまとめて見る
+
+# AWS IAM Access Analyzer
+- 「このリソース、外に公開されてない？」を自動チェック
+- S3バケット, IAMロール, KMSキーを「誰がアクセスできるか」解析
+- configよりも外部アクセス特化
 
 # AWS organizations
 - 複数のアカウントを一元管理
@@ -12,10 +58,12 @@
 - SCP
     - 組織のルートやOU、アカウントに適用できるポリシー
     - デフォルトはfullアクセス。明示的に拒否必要
-- 組織単位で一括請求
+- 組織単位で一括請求。
+    - RI割引共有の設定を無効化したら個別アカウントで割引適用できる
 
 # ControlTower
 - Organizations環境を自動で作るサービス
+- ランディングゾーンという初期セットを設定する
 
 # Service Catalog
 - 承認済みのCloudFormationテンプレートのカタログを作成し、開発者がセルフサービスでそれらをプロビジョニングできるようにする
@@ -26,15 +74,40 @@
     - Provision	実際にリソースを作る
 - Launch Constraint(起動制約) ユーザーがスタックを作るとき別のIAMロールで実行する
 
+# AWS Resource Access Manager
+- 複数アカウントでAWSリソースを共有できる
+    - VPC subnet, Transit Gateway, Route53 resolver, License
+
 # AWS Systems Manager
-- AWS Systems Manager Inventory EC2フリートにインストールされているソフトウェアや OS の設定を収集・管理
+- AWS Systems Manager Inventory 
+    - インスタンス情報収集
+    - EC2フリートにインストールされているソフトウェアや OS の設定を収集・管理
 - Session Manager
     - SSH使わずEC2に接続
     - SSMマネージャーが必要
-- Run Command 全EC2にコマンド実行
+- Run Command 
+    - 全EC2にコマンド実行
+    - SSMマネージャーが必要
+- Automation
+    - 運用を自動化（Run Commandの上位版）
+    - 複数ステップやロールバックできる
+- Patch Manager
+    - EC2やオンプレのOSにパッチを自動適用する機能
+    - タグでグループ分け可能
+    - Patch Baseline 「どのパッチを当てるか」のルール。デフォルトもあるしカスタムもできる
+    - メンテナンスウィンドウ いつ実行するか設定できる
+    - スキャンとインストール インストールは実際に適用
+- State Manager 
+    - EC2の状態を保つ。関連付けることで特定のサービスが常にインストールされた状態にしたりする
+    - Automationを定期実行可能
+- Quick Setup
+    - SSMのベストプラクティス設定をワンクリックで自動構築する機能
 
 # AWS Personal Health Dashboard
 - AWSアカウントに影響するAWS障害を知らせるサービス
+- AWS Health
+    - 自分に関連する情報のみを知りたいとき使う
+    - EventBridgeと連携して通知可能
 
 # Service Quotas
 - 上限値の引き上げを行う画面
@@ -54,5 +127,16 @@
 # AWS Resource Groups
 - タグベースのリソース管理
 
-# AWS Resource Access Manager
-- AWSアカウント間でリソースを共有するサービス
+# IAM
+- IAM アクセス許可の境界(Permissions Boundary)
+    - 最大権限の上限を決める仕組み
+    - 制限であって許可ではない
+
+# 委任先管理者
+- 管理アカウントの代わりに、そのサービスだけ管理する人」
+- これらは委任先管理者を設定できる
+    - AWS Config
+    - AWS Security Hub
+    - AWS GuardDuty
+    - AWS IAM Identity Center
+

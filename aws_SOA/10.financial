@@ -1,17 +1,58 @@
 
 # TrustedAdviser
-- ベストプラクティスを教えてくれる
+- 未使用のリソースや使用率の低いインスタンスの特定などを教えてくれる
 - AWSのサポートプランによって提供内容変わる
+- AWS Compute Optimizer
+    - Amazon EC2のインスタンスタイプやAmazon EBSボリューム構成に適したAWSリソースを特定できるサービスで内部的に使われてる
+
+# AWS Billing and Cost Management
+- Cost ExplorerやUsage Reportなどのサービスの親玉
+- コスト配分タグを有効化する機能がある
 
 # Cost Explorer
-- コスト分析
-- Savings Plans
+- コスト分析 簡単かつグラフなどあり。リサイズ推奨もする
+- タグ機能 コストを「プロジェクトごと」に分析したいなど、グループ化できる
+    - タグ有効化前のデータは見られない
+- Forecast 将来コストを予測できる
+- Savings Plans : CostExplorerで分析できる
     - 一定額の利用を1年または3年コミットする代わりに割引を受ける」料金制度
     - Compute Savings Plans
         - 一番柔軟な割引
     - EC2 Instance Savings Plans
-        - EC2専用割引でインスタンスファミリー固定
-    - reservedInstanceより柔軟でインスタンス変更、LambdaやFargateに適用も可能
+        - EC2専用割引でインスタンスファミリーとリージョン固定
+    - リザーブドインスタンスより柔軟でインスタンス変更、LambdaやFargateに適用も可能
+- Cost Explorer API API使える。プログラムでコスト分析が可能
+- Cost Explorer のデータ更新頻度は24時間
+- 複数アカウント横断で見れる、リサイズ推奨機能がある
+
+# AWS Cost and Usage Report
+- 一番細かいコストデータを取得するサービス
+- 時間単位 or リソース単位で見れる
+- 最も詳細なレポートをS3にCSVで出力。定期出力も可能
 
 # AWS Budgets
 - 予算アラート
+
+# AWSタグエディタ
+- 複数リソースに対してタグを一括で検索・編集するツール
+
+# Audit Manager
+- AWS ConfigとAWS CloudTrailの情報を元に監査証拠の自動収集。レポート作成
+
+# コストレポート系
+- AWS Cost and Usage Reportで出力
+    - S3に詳細データ。Athena / QuickSightで分析
+    - Cost Explorerはグラフはできるが分析には向かない
+
+# セキュリティ系レポート
+- AWS Security Hub
+    - スコア化・ダッシュボード
+
+# 経営者向けレポート
+- Amazon QuickSight
+    - データを可視化してダッシュボードやレポートを作るサービス
+
+# ログ系の集約
+- クロスアカウント・クロスリージョンダッシュボード
+- CLIでデータを一個一個とってくる
+

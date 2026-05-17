@@ -8,8 +8,16 @@
 # AWS Storage Gateway
 - オンプレにいながらAWSストレージをマウントする
 - 種類
-    - File Gateway : NFS / SMB → S3
+    - File Gateway : NFS/SMB → S3 オンプレからファイルサーバにアクセスしたい
     - Volume Gateway : iSCSI → EBS
+        - 保管型ボリューム オンプレ中心。オンプレミスのローカルストレージに保存。非同期でS3に
+        - キャッシュ型ボリューム ローカル中心。Amazon S3に保存。頻繁にアクセスされるデータのみローカルに保存
     - Tape Gateway : 仮想テープライブラリ バックアップ要素
 
-    
+# Data Pipeline
+- データワークフロー管理
+- stepFunctionに置き換わってるのでほぼ出ない
+
+# Snowball
+    - Snowball Edge Compute Optimized 40TB
+    - Edge Storage Optimized 210TB

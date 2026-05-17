@@ -16,27 +16,126 @@
     - リザーブドインスタンス 一年や三年の予約で借りる
     - オンデマンドインスタンス デフォルト
     - スポットインスタンス 最も安いが勝手に止まる可能性あり。バッチ処理に使う
+        - Spot interruption 2分前の通知
+        - Capacity rebalance 早めの通知。インスタンス起動とかするならこれ使う
         - 中断があったらeventBridgeに連携できる
+        - 配分戦略
+            - lowest-price 一番安い
+            - capacity-optimized interruption(中断)が少ない
+            - price-capacity-optimized 価格と中断のバランスがいいもの
+            - diversified 均一に配分
 - auto scaling
     - AZをまたいで設置可能
+    - 用語
+        - Launch Template / Launch Configuration → どんなEC2を起動するか
+        - Auto Scaling Group (ASG) → 何台維持するか
+        - Scaling Policy → いつ増減させるか
     - 種類
         - Target Tracking	一番よく使う
         - Step Scaling	段階的
         - Simple Scaling	古い
     - Cooldown設定 頻繁にスケーリングするのを防ぐ。default300秒
     - スケジュールされたスケーリングアクションが可能
+    - 終了ポリシー
+        - Default: 複数の条件を組み合わせた標準的なポリシー
+        - OldestInstance: 最も古いインスタンスを優先終了
+    - スケールイン保護
+        - 特定のインスタンスをAuto Scalingグループのスケールイン動作から除外する
+    - Instance Refresh
+        - 新しいAMIをAuto Scalingでローリング更新
+    - Lifecycle Hook 
+        - EC2起動後からinServiceまでの間に処理を実施するために設定する
+        - 起動後にステータスをwaitにしてイベント発火。CompleteLifecycleActionをたたくと、Wait解除
 - Instance Connect 
     - AWSコンソールからSSHアクセスする機能
     - SecurityGroupで22閉じてると接続不可
-- EC2 Image Builder パイプライン : AMI 作成のプロセスをパイプラインとして定義するサービス
+- 起動 
+    - 起動テンプレートと起動設定がある。起動設定は非推奨
+    - EC2 ユーザーデータ EC2インスタンス起動時に自動実行されるスクリプト機能
+- Elastic Network Adapter ENA
+    - 有効にするとネットワークパフォーマンス向上。DBでも使える。
+- AMI
+    - マシーンイメージのこと。autoスケーリングで使う
+    -EC2 Image Builderを使うと、最新パッチが出たときなどをトリガーに自動でAMI作成
+    - AMI作成時はスンスタンス止めないとファイル整合性が問題になる
+    - 起動権限(Launch Permission) AMIを別アカウントに使わせたいときに使う。スナップショット共有も必要
+- 拡張ネット―ワーキング
+    - EC2インスタンスの中の通信処理を高速化する仕組み
+    - ENAを有効化する
+        - 特定のインスタンスタイプである必要がある
+        - ドライバが必要
+        - 有効にする必要がある
+- EC2Rescue
+    - EC2が壊れたときにログ収集＆修復する公式ツール
+    - OSレベルのログ集めれる
+    - SSMエージェントとIAMロール必要
+- SQSとの組み合わせ
+    - インスタンス当たりのメッセージ数をターゲットにする。キューの深さやバックログ、キューに溜まったメッセージとも言う
+
+# ElastiCache for Redis
+- 高速なインメモリキャッシュ
+- 永続化オプションもある
+- リードレプリカ作れる。マルチAZやフェイルオーバー可能
+- Cluster ModeをONにすると、複数シャードで実行できる
+- 読み取り負荷はリードレプリカ、書き込み負荷はシャード
+    - レプリカはシャード一つに対して5個作れる。
+    - レプリカは高可用性のためがメイン
+- Global Datastore
+    - 複数リージョンにまたがるRedisのレプリケーション
+    - 非同期コピーなので少しレイテンシある
+    - 書き込みはプライマリのみ
 
 # EKS
-- IRSA pod単位のIAMロールつけれる
+- 基本構成
+    - コントロールプレーン → AWS管理（ユーザーは触らない）
+    - ワーカーノード → 自分で管理（EC2 or Fargate）
+    - Deploymentで理想状態の宣言し、ReplicaSetで数を維持
+- ノードの種類
+    - Managed Node Group EC2を自動で管理（Auto Scaling含む）
+    - Self-managed nodes 自分でEC2管理
+    - Fargate サーバーレスでPod実行
+- 権限
+    - IRSA pod単位のIAMロールつけれる
+    - ノードロール EC2ノードに付くIAMロール
 - DaemonSet 各ノードに1つずつ Pod を配置することを保証する
 - ServiceAccount Pod（アプリ）がKubernetes APIを使うときのユーザー
+- スケーリング
+    - Cluster Autoscaler ノード数をスケール
+    - Horizontal Pod Autoscaler ポッド数やレプリカをCPU使用率やカスタムメトリクスに基づいて自動的にスケールする
+    - Vertical Pod Autoscaler 各ポッドに割り当てるCPUとメモリのリソース量を自動的に調整
+- VPC CNI
+    - VPCのIPをpodに割り当てる
+- Serviceタイプ EKSの公開方法
+    - ClusterIP 内部通信のみ
+    - NodePort 各ノードのポートで公開
+    - LoadBalancer AWSのLBを自動作成
+        - Ingress
+            - L7で動いて、HTTPの細かいルーティングをする
+            - Ingress Controllerで動く
+- オブザーバビリティダッシュボード 
+    - パフォーマンスモニタリング
 
 # ECS
 - awslogs ログドライバー
     - Fargate (および ECS) がネイティブにサポートするログドライバー
     - コンテナの stdout/stderr ストリームをキャプチャする
+    - cloudWatchに送る
+- ネットワークモード
+    - awsvpc : タスクに直接ENI（IP）がつく。Fargateの場合は自動でこっち
+    - host, bridge : EC2のIP使う。defaultはbridge
+
+# FireLens
+- ログを違う場所に転送
+- Fluent Bit（軽量） or Fluentd（高機能）が使われてる
+    - Fargateログルーター（＝Fluent Bitコンテナ）
+
+# ADOT
+- OpenTelemetryのAWS版。
+- ログ系で使う
+
+# Amazon EventBridge
+- アーカイブ機能
+    - イベントの履歴を保存して再実行
+    - イベントバス単位でONにできる
+    - アーカイブするのはEC2のエラーのみのようにフィルタ可能
 

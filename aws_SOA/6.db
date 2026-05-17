@@ -1,16 +1,60 @@
 
 # RDS
-- RDS Performance Insights DB負荷をグラフで視覚的に表示
-- RDS の Enhanced Monitoring インスタンスの OS 状態を詳しく知る
+- CloudWatch Database Insights DB負荷をグラフで視覚的に表示
+    - 今は廃止されてる。Amazon CloudWatch Database Insights使う
+- 拡張モニタリング（EnhancedMonitoring）  
+    - Amazon RDSインスタンスのOS状態を1秒単位で取得出来る仕組み
+- 自動バックアップ 35日間同一リージョンに保存可能
+- RDS Proxy
+    - アプリとRDSの間に入るコネクション管理サービス
+    - RDSフェイルオーバー時の接続維持し、時間短縮
+    - Secrets Managerと連携。アプリがDBパスワードを持たなくてよい
+- インスタンスタイプ
+    - gp2 / gp3 バランス型
+    - io1 / io2 IO性能
+    - インスタンスタイプの変更は再起動必要
+    - ストレージの変更は再起動なしだけど、縮小はできない
+- リードレプリカ
+    - 最大5個まで
+    - フェイルオーバーは手動
+    - クロスリージョン可能
 
 # Aurora 
-- バックトラック機能でデータを一定期間巻き戻し可能
+- writer一個とreader15個と3AZ跨いだストレージの組み合わせ
+- writerが落ちたらreaderが昇格。ストレージ共有だからフェイルオーバー早い
+- バックトラック機能
+    - データを一定期間巻き戻し可能
+    - 72時間のせいやく
 - ポイントインタイムリカバリー 
     - 任意の時点にデータベースを復元
     - 新しいデータベースエンドポイントが発行される
+    - 35日以内の制約
 - Aurora Serverless
     - DBサーバーを自分でサイズ管理しなくていいAurora
+- Aurora Global Database
+    - 別リージョンにストレージとreaderを置く。
+- Multi-AZクラスター
+    - Aurora Replica(reader)を複数AZに配置
+
+# DynamoDB
+- DynamoDB Global Tables 世界中どこでも書けるDB。
+- モード
+    - オンデマンドモード 全自動
+    - プロビジョンドキャパシティモード 自分で基準決める。auto scaling可能 
+- バックアップ
+    - オンデマンドバックアップ
+        - 手動 or APIで実行
+    - ポイントインタイムリカバリ
+        - 過去の任意の時点に戻せる
+        - 最大35日間
+    - 新しいテーブルで復元される
 
 # AWS Database Migration Service
 - データベースの移行や継続的なレプリケーション（CDC）を行うためのサービス
+- AWS Schema Conversion Tool使うとスキーマ変換できる
+
+# AWS Application Migration Service
+- サーバをそのままEC2にするやつ
+- エージェント入れてデータ移行
+- 低コストなリソースで構成したステージングエリアにいったん移してテストする
 

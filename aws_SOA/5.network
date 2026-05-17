@@ -4,6 +4,8 @@
 - パケット送るだけなので低レイテンシー
 - 固定IP可能
 - ElasticIpも付けられる
+- ログの有効可オプションあり、ログはS3に保存される
+- ログとは別でcloudWatchで正常性をモニタリング可能
 
 # ALB
 - 第7層で働く
@@ -15,6 +17,15 @@
     - cloudFrontがある場合はキャッシュビヘイビアを編集し、セッション Cookie をオリジンに転送する必要がある
 
 
+# ELB
+- cloudWatch監視
+    - ELBは自動でメトリクスをCloudWatchに送る
+        - RequestCount, Latency, エラー, HealthyHostCount
+            - エラーはELBのエラーとEC2のエラー両方遅れる
+    - 最初から有効
+    - ログはS3
+- セキュリティグループつけられる
+
 # CLB
 - 旧世代のLB
 - レガシーアプリの時使うことある
@@ -23,7 +34,8 @@
 - ネットワークセキュリティ装置のロードバランサ
 
 # AWS WAF
-- DDoS攻撃対策（L7攻撃）
+- DDoS攻撃やXSS対策（L7攻撃）
+- 通信の中身まで見てる
 
 # AWS Shield
 - DDoS攻撃対策（L3/L4攻撃）
@@ -31,18 +43,49 @@
 - Advanced コスト保護や攻撃可視化が可能
 
 # AWS Network Firewall
-    - VPCのネットワークトラフィックを検査する。
-    - ドメイン名のブロックもできる。NACLの強化版みたいなイメージ
+- VPCのネットワークトラフィックを検査する。
+- ドメイン名のブロックもできる。NACLの強化版みたいなイメージ
+- ディープパケットインスペクションも実行可能
 
 # AWS Firewall Manager
 - 複数アカウントのWAFなどを一括管理   
 
 # cloudFront 
-- CloudFront-Is-Mobile-Viewer ヘッダーつけるとmobile判定できる
 - Origin Shield : オリジンの前に配置されるキャッシュレイヤー
+- ヘッダー
+    - CloudFront-Is-Mobile-Viewer ヘッダーつけるとmobile判定できる
+    - Authorizationヘッダー 認証
+    - CloudFront-Viewer-Country 国ごとに転送
+    - オリジンカスタムヘッダー CloudFrontが勝手に付ける固定ヘッダー。ALBに直接アクセスを禁止するのに使う
+- Cache Policy
+    - 何が違ったら別キャッシュにするかを決めれる
+    - クエリ文字列を無視するようにすれば、クエリが違ってもキャッシュしてくれる
+- Origin Request Policy
+    - オリジンに何を送るかを決める
+- ディレクティブ （HTTPヘッダー）
+    - Cache-Control: 
+        - max-age ディレクティブでキャッシュ管理
+        - no-cache キャッシュしない
+        - s-maxage 共有キャッシュ専用(CDN用)のTTL。max-ageより優先される
+        - must-revalidate 期限切れたら必ず再取得
+- オリジン
+    - S3 静的コンテンツ
+    - カスタムオリジン ALB, EC2, オンプレなど
+    - 静的コンテンツと動的コンテンツを分けたいときは、キャッシュビヘイビアでオリジン分岐
+- キャッシュヒット率問題
+    - クエリパラメータが違うためキャッシュされない時は、クエリ文字列を無視する（forwardしない）
+    - ヘッダーでヒットしない時は、不要なヘッダーを転送しない
+    - Cookieでヒットしない時は、Cookieを無効化 or 必要最小限に
+    - 動的コンテンツが多い時は、静的と動的を分ける（パスベース）
+
 
 # Route53
 - DNSサービス
+- ホストゾーン ドメインのDNS設定をまとめて管理する箱
+    - ホストゾーン（example.com）
+    -  ├ www → ALB (レコード)
+    -  ├ api → EC2 (レコード)
+    -  └ mail → mailサーバー (レコード)
 - アマゾンリソースの名前解決はエイリアスレコード
 - Route 53 Resolver
     - VPCとオンプレミス間の名前解決する
@@ -50,27 +93,57 @@
         - VPC内のリソースがインターネット上のドメイン名を問い合わせる際のDNSクエリを検査し、定義したルールに基づいて通信を許可またはブロックする
 - ルーティングポリシー
     - フェイルオーバーや地理的ルーティングなどがある
+- フェイルオーバー
+    - Route 53 フェイルオーバールーティング 高可用性や障害時の対策
+    - ヘルスチェックはRoute 53が直接チェック
+    - CloudFront単体でもオリジンフェイルオーバー可能。CloudFront → ALB（オリジン）構成がよく出る
+- CNAMEレコードはルートドメインには使えない
+
+
+# AWS Certificate Manager
+- 証明書の管理する
+- 証明書を発行したらDNSにレコード追加が必要（DNS validation）。emailでもできるがあまり使わない
+- ACMの証明書は 特定のサービスでしか使えない、各リージョンごとに必要。ACM証明書をアタッチして使う
 
 # AWS Direct Connect
-- オンプレとAWSを専用線でつなぐサービス
+- オンプレとAWSを専用線でつなぐサービス。物理接続
+
+# VPN
+- Site-to-Site VPN インターネット経由で暗号化接続
+- ClientVPNエンドポイントにアクセスするとAWSにVPN接続できる
+- スプリットトンネル VPNルートテーブルに定義されたルート（通常はVPC CIDR範囲）に一致するトラフィックのみがVPNトンネルを経由
+
 
 # ゲートウェイ
 - InternetGateway VPCとインターネットの内と外の両方の接続に使う
 - NatGateway VPCからインターネットへの接続に使う
 - Egress-only-gateway IPv6のNatGateway
+- ゲートウェイエンドポイント 
+    - S3とDynamoDB専用のエンドポイントタイプ
+    - ルートテーブルで設定されるため、DNS設定変更不要
+    - インターネットゲートウェイやNATインスタンスが不要
 
 # AWS Transit Gateway
 - VPCやオンプレネットワークをハブ型で接続するサービス
 - 複数のVPCPeeringを中継する
 
 # VPC
--  VPC Flow Logs
-    - ENIのトラフィックをキャプチャする
+- 1リージョンに最大5つ。上限の引き上げは可能
+- VPC Flow Logs
+    - VPC内のネットワーク通信(ENIからENIへの通信)をログとして記録するサービス
+    - 通信崎、通信元、許可か拒否かがわかる
+    - 保存先
+        - S3 長期保存したい
+        - CloudWatch Logs リアルタイム分析したい
+    - VPCやサブネット、EC2といった単位で有効化できる
+- Traffic Mirroring
+    - EC2のネットワーク通信をコピーして別の場所に送る機能。
+    - flow logsよりも詳細なデータ（通信の中身）を取得可能
 - VPC Peering
-    - VPCをつなぐ
+    - VPCをつなぐ。別リージョンも可能
 - VPC エンドポイント
-    - ゲートウェイ型 
-    - interface型 ENIとサービス間をprivateLinkでつなぐ
+    - ゲートウェイ型 VPC内のリソースからS3へのトラフィック
+    - interface型 ENIとサービス間をprivateLinkでつなぐ。（Direct Connect、VPN、VPC Peering）
     - エンドポイントポリシーが設定可能
 - EC2に接続できないときのトラブルシューティング チェックする順番
     - Security Group SSH (TCP 22) が許可されていない
@@ -78,7 +151,16 @@
     - publicIp  EC2にPublic IPがない
     - RouteTable パブリックサブネットの条件 0.0.0.0/0 → Internet Gatewayを満たしてない。
     - IGW 設置されてない
+- VPCのDNS設定 カスタムVPCの時のDNS解決問題で聞かれる
+    - DNSサポート ON:DNS使える（名前解決できる）
+    - DNSホスト名 ON:EC2に自動でDNS名が付く
+- Ingress-only モード
+    - インターネットからのアクセスブロック
 
 # AWS Global Accelerator 
-- ユーザー → AWS アプリまでの通信を「最短・安定ルート」に乗せるためのネットワークサービス
+- ユーザー → AWSアプリまでの通信を「最短・安定ルート」に乗せるためのネットワークサービス
+    - クライアントPCからEC2インスタンスへのアクセスを迅速化
 - DNSキャッシュを避けたい、リージョン障害時の高速フェイルオーバーなどで使用
+
+# VPC Lattice
+- 複数VPCのサービスを簡単に接続したいときに使う

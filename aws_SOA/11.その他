@@ -1,6 +1,16 @@
 
 - netstat -an | grep LISTEN 
     - サーバで現在 LISTEN（待ち受け）しているポートを確認するコマンド
+- フォールトトレランス 障害耐性
+- ENI IPを持てる箱でEC2にくっつく。複数つけれるよ
 
-- sufficient
+- sufficient 十分な・足りている
+- Desired 望ましい
+- Evictions 立ち退き。キャッシュの容量オーバーのエラー
+- optimized 最適化された
+- IO属性 input,output
+- Describe 説明する・記述する
+- Evaluate 評価する・判断する
+- Approximate おおよその・概算の
+- Audit 監査
 

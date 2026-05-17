@@ -1,0 +1,24 @@
+
+# MFA認証
+- セキュリティ強化したいとき設定
+- 特定の操作時だけMFA必須 IAMポリシーで条件指定（aws:MultiFactorAuthPresent）
+
+# フェデレーション
+- 会社のIDでAWSにログインすること
+- SAMLフェデレーション or IAM Identity Center 
+    - 既存のSAML認証基盤があるときはSAML。それ以外、基本はIAM Identity Center
+    - 社内ユーザーでAWSログインしたい
+    - Active Directory 会社のログインIDを管理する仕組み
+    - SSO（シングルサインオン） アマゾンやgoogleなど外部のADでログインする仕組み
+- Amazon Cognito
+    - モバイル / WebアプリからAWSアクセス
+- STS （AssumeRole）
+    - 一時的に権限を付与したい
+
+# IAM Identity Center
+- AWSにログインするための共通入口（SSO）
+- 権限セット(Permission Set)の割り当てを管理
+- ユーザ情報はActive Directoryで管理しそれを使ってログインするのがAM Identity Center
+- 接続確立にはSAMLとIAM Identity Centerでメタデータの交換が必要
+
+
